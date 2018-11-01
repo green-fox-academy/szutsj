@@ -19,8 +19,6 @@ public class Calculator {
             if (operator.equals("/") || operator.equals("*") || operator.equals("+") || operator.equals("-") || operator.equals("%")){
                 acceptableOperator = false;
                 System.out.println(calculate(operator, firstNumber, secondNumber));
-            } else {
-                acceptableOperator = true;
             }
         }
     }
