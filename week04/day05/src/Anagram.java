@@ -17,16 +17,35 @@ public class Anagram {
     public static boolean anagram(String input1, String input2) {
         char[] inp1 = input1.toCharArray();
         char[] inp2 = input2.toCharArray();
+        char toSort;
         boolean anagrams = true;
-        if (inp1.length != inp2.length){
-            anagrams = false;
-        } else {
-            for (int i = 0; i < inp1.length; i++) {
-                if (inp1[i] != inp2[inp2.length - 1 - i]){
-                    anagrams = false;
+
+        for (int i = 0; i < inp1.length - 1; i++) {
+            for (int j = i+1; j < inp1.length; j++){
+                if (inp1[i] > inp1[j]){
+                    toSort = inp1[i];
+                    inp1[i] = inp1[j];
+                    inp1[j] = toSort;
                 }
             }
         }
+
+        for (int i = 0; i < inp2.length - 1; i++) {
+            for (int j = i+1; j < inp2.length; j++){
+                if (inp2[i] > inp2[j]){
+                    toSort = inp2[i];
+                    inp2[i] = inp2[j];
+                    inp2[j] = toSort;
+                }
+            }
+        }
+
+        if (String.valueOf(inp1).equals(String.valueOf(inp2))){
+            anagrams = true;
+        } else {
+            anagrams = false;
+        }
+
         return anagrams;
     }
 }
