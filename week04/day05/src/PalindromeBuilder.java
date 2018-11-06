@@ -15,6 +15,7 @@ public class PalindromeBuilder {
         char[] inp = input.toCharArray();
         char[] palindrome = new char[inp.length * 2];
         int j = inp.length -1;
+
         for (int i = 0; i < inp.length * 2; i++) {
             if (i < inp.length){
                 palindrome[i] = inp[i];
@@ -22,7 +23,8 @@ public class PalindromeBuilder {
                 palindrome[i] = inp[j];
                 j--;
             }
-            }
-        return palindrome;
         }
+
+        return palindrome;
+    }
 }
