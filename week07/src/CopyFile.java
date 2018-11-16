@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.SQLOutput;
 
 public class CopyFile {
 
@@ -21,7 +20,6 @@ public class CopyFile {
       Path secondPath = Paths.get(filename2);
       Files.copy(firstPath, secondPath);
     } catch (IOException e){
-      System.out.println("There is a problem with one of the files");
       return false;
     }
     return true;
