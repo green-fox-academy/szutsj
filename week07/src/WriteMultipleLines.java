@@ -13,27 +13,31 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class WriteMultipleLines {
 
   public static void main(String[] args) {
-    writingGivenNumberOfLines("./src/my-file3.txt", "I have just made what you asked from me.", 5);
+    writingGivenNumberOfLines("./src/my-file7.txt", "I have just made what you asked from me.", 5);
   }
 
   public static void writingGivenNumberOfLines(String filePath, String text, int numberOfLines){
-    List<String> lines = new ArrayList<>();
-    ArrayList<String> textToWrite = new ArrayList<>(Arrays.asList(text));
+    List<String> lines;
+    ArrayList<String> textToWrite = new ArrayList<>();
 
     try{
       Path thePath = Paths.get(filePath);
-
       for (int i = 0; i < numberOfLines; i++) {
+        textToWrite.add(text);
+      }
+      if (!Files.exists(thePath)){
+        Files.write(thePath, textToWrite);
+      } else {
         Files.write(thePath, textToWrite, StandardOpenOption.APPEND);
       }
       lines = Files.readAllLines(thePath);
       System.out.println(lines);
+      System.out.println(lines.size() );
     } catch (IOException e){
       System.out.println("Unable to write the file.");
     }
