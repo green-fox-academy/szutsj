@@ -16,6 +16,33 @@ public class BattleApp {
     second.fillShip();
     second.print();
 
+    System.out.println(second.getPirateShip().get(1));
+    System.out.println(first.getPirateShip().get(2));
+    System.out.println(second.getPirateShip().get(1).brawl(first.getPirateShip().get(2)));
+    System.out.println(second.getPirateShip().get(1));
+    System.out.println(first.getPirateShip().get(2));
+    System.out.println();
+
+    System.out.println(first.getPirateShip().get(0));
+    System.out.println(first.getPirateShip().get(0).drinkSumRum());
+    System.out.println(first.getPirateShip().get(0).howsItGoingMate());
+    System.out.println(first.getPirateShip().get(0));
+    System.out.println(first.getPirateShip().get(0).drinkSumRum());
+    System.out.println(first.getPirateShip().get(0).howsItGoingMate());
+    System.out.println(first.getPirateShip().get(0));
+    System.out.println(first.getPirateShip().get(0).drinkSumRum());
+    System.out.println(first.getPirateShip().get(0).howsItGoingMate());
+    System.out.println(first.getPirateShip().get(0));
+    System.out.println(first.getPirateShip().get(0).drinkSumRum());
+    System.out.println(first.getPirateShip().get(0).howsItGoingMate());
+    System.out.println(first.getPirateShip().get(0));
+    System.out.println(first.getPirateShip().get(0).drinkSumRum());
+    System.out.println(first.getPirateShip().get(0).howsItGoingMate());
+    System.out.println(first.getPirateShip().get(0));
+    System.out.println(first.getPirateShip().get(0).drinkSumRum());
+    System.out.println(first.getPirateShip().get(0).howsItGoingMate());
+    System.out.println();
+
 
     System.out.println(first.battle(second));
     System.out.println();

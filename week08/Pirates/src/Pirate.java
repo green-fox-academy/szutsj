@@ -15,14 +15,16 @@
 //    Add a parrot.
 
 public class Pirate {
+  private int numberOfPirateOnShip;
   private boolean captain;
   private int rumsDrunken;
   private int drinkSomeRumCalled;
   private boolean passedOut;
   private boolean alive;
 
-  public Pirate(boolean captain){
+  public Pirate(boolean captain, int numberOfPirateOnShip){
     this.captain = captain;
+    this.numberOfPirateOnShip = numberOfPirateOnShip;
     rumsDrunken = 0;
     drinkSomeRumCalled = 0;
     passedOut = false;
@@ -70,7 +72,8 @@ public class Pirate {
   }
 
   public String drinkSumRum(){
-    if (!isAlive()){
+    drinkSomeRumCalled++;
+    if (!this.isAlive()){
       return "He is dead!";
     } else {
       rumsDrunken += (int)Math.random() * 5 + 1;
@@ -79,10 +82,11 @@ public class Pirate {
   }
 
   public String howsItGoingMate() {
-    drinkSomeRumCalled++;
-    if (!isAlive()){
+    if (!this.isAlive()){
       return "He is dead!";
-    } else if (drinkSomeRumCalled >= 0 && drinkSomeRumCalled <= 4) {
+    } else if (this.isPassedOut()){
+      return "He is already passed out!";
+    }else if (drinkSomeRumCalled >= 0 && drinkSomeRumCalled <= 4) {
       return "Pour me anudder!";
     } else {
       setPassedOut(true);
@@ -95,15 +99,15 @@ public class Pirate {
   }
 
   public String brawl(Pirate enemy){
-    if (!enemy.isAlive() || !enemy.isAlive() || !this.isAlive() || !this.isPassedOut()){
+    if (!enemy.isAlive() || enemy.isPassedOut() || !this.isAlive() || this.isPassedOut()){
       return "One of the pirates are already dead or passed out, there can be no brawl.";
     } else {
       int resultOfBrawl = (int)(Math.random() * 3);
       if (resultOfBrawl == 0){
-        enemy.setAlive(false);
+        enemy.die();
         return "Our pirate has won.";
       } else if (resultOfBrawl == 1){
-        enemy.setAlive(false);
+        this.die();
         return "Our pirate has lost.";
       } else {
         enemy.setPassedOut(true);

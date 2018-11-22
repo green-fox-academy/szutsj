@@ -33,13 +33,17 @@ public class PirateShip {
     return shipsName;
   }
 
+  public ArrayList<Pirate> getPirateShip() {
+    return pirateShip;
+  }
+
   public void fillShip(){
     int numberOfPirates = (int)(Math.random() * 15) + 1;
     for (int i = 0; i < numberOfPirates; i++) {
        if (i == 0){
-         pirateShip.add(new Pirate(true));
+         pirateShip.add(new Pirate(true, i));
        } else {
-         pirateShip.add(new Pirate(false));
+         pirateShip.add(new Pirate(false, i));
        }
     }
   }
