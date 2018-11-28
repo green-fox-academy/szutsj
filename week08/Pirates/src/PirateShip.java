@@ -93,42 +93,34 @@ public class PirateShip {
 
     if (ourScore >= enemyScore){
       win = true;
-
-      for (int i = 0; i < enemy.pirateShip.size(); i++) {
-        int dead = (int)(Math.random() * 2);
-        if (dead == 0){
-          enemy.pirateShip.get(i).setAlive(false);
-        }
-      }
-
-      int j = 0;
-      for (int i = 0; i < rum; i++) {
-          this.pirateShip.get(j).setRumsDrunken(1);
-          j++;
-          if (j == this.pirateShip.size()){
-            j = 0;
-          }
-        }
-      } else {
+      party(this, rum);
+      losingMates(enemy);
+    } else {
       win = false;
-
-      for (int i = 0; i < this.pirateShip.size(); i++) {
-        int dead = (int)(Math.random() * 2);
-        if (dead == 0){
-          this.pirateShip.get(i).setAlive(false);
-        }
-      }
-
-      int j = 0;
-      for (int i = 0; i < rum; i++) {
-        enemy.pirateShip.get(j).setRumsDrunken(1);
-        j++;
-        if (j == enemy.pirateShip.size()){
-          j = 0;
-        }
-      }
+      party(enemy, rum);
+      losingMates(this);
     }
   return win;
+  }
+
+  public static void losingMates(PirateShip pirateship){
+    for (int i = 0; i < pirateship.pirateShip.size(); i++) {
+      int dead = (int)(Math.random() * 2);
+      if (dead == 0){
+        pirateship.pirateShip.get(i).setAlive(false);
+      }
+    }
+  }
+
+  public static void party(PirateShip piratship, int rum){
+    int j = 0;
+    for (int i = 0; i < rum; i++) {
+      piratship.pirateShip.get(j).setRumsDrunken(1);
+      j++;
+      if (j == piratship.pirateShip.size()){
+        j = 0;
+      }
+    }
   }
 
   @Override
