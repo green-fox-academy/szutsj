@@ -76,22 +76,7 @@ public class PirateShip {
     boolean win;
     int rum = (int)(Math.random() * 15) + 1;
 
-    for (int i = 0; i < this.pirateShip.size(); i++) {
-      if (this.pirateShip.get(i).isAlive()){
-        ourNumberOfAliveCrew++;
-      }
-    }
-
-    for (int i = 0; i < enemy.pirateShip.size(); i++) {
-      if (enemy.pirateShip.get(i).isAlive()){
-        enemyNumberOfAilveCrew++;
-      }
-    }
-
-    ourScore = ourNumberOfAliveCrew - this.pirateShip.get(0).getRumsDrunken();
-    enemyScore = enemyNumberOfAilveCrew - enemy.pirateShip.get(0).getRumsDrunken();
-
-    if (ourScore >= enemyScore){
+    if (countScore(this) >= countScore(enemy)){
       win = true;
       party(this, rum);
       losingMates(enemy);
@@ -101,6 +86,17 @@ public class PirateShip {
       losingMates(this);
     }
   return win;
+  }
+
+  private int countScore(PirateShip pirateShip) {
+    int numberOfAilveCrew = 0;
+
+    for (int i = 0; i < pirateShip.pirateShip.size(); i++) {
+      if (pirateShip.pirateShip.get(i).isAlive()){
+        numberOfAilveCrew++;
+      }
+    }
+    return numberOfAilveCrew - pirateShip.pirateShip.get(0).getRumsDrunken();
   }
 
   public static void losingMates(PirateShip pirateship){
@@ -129,4 +125,5 @@ public class PirateShip {
         "pirateShip=" + pirateShip +
         '}';
   }
+
 }

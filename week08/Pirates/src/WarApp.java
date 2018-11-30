@@ -39,9 +39,6 @@ public class WarApp {
     System.out.println(firstArmada.war(secondAramada));
     firstArmada.print();
     secondAramada.print();
-
-
   }
-
 
 }

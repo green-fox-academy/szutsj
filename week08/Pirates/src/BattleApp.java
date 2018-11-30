@@ -31,4 +31,5 @@ public class BattleApp {
     first.print();
     second.print();
   }
+
 }

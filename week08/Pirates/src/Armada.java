@@ -26,6 +26,7 @@ public class Armada {
     boolean win = true;
 
     for (int i = 0; i < this.armada.size(); i++) {
+
       for (int j = 0; j < enemy.armada.size(); j++) {
         if (this.armada.get(i).battle(enemy.armada.get(j))) {
           enemy.armada.remove(j);
@@ -41,6 +42,7 @@ public class Armada {
           }
         }
       }
+
       if (this.armada.size()== 0){
         win = false;
       } else if (enemy.armada.size() == 0){
@@ -56,4 +58,5 @@ public class Armada {
       System.out.println(this.armada.get(i).getShipsName());
     }
   }
+
 }
