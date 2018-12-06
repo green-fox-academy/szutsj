@@ -15,14 +15,8 @@ public class Garden {
     plants = new ArrayList<>();
   }
 
-  public void addPlantToGarden(String plant, String color){
-    if (plant.toLowerCase().equals("tree")){
-      plants.add(new Tree(color));
-    } else if (plant.toLowerCase().equals("flower")) {
-      plants.add(new Flower(color));
-    } else {
-      System.out.println("This is a garden, you only can add flowers or trees");
-    }
+  public void addPlantToGarden(Plant newPlant){
+    plants.add(newPlant);
   }
 
   public void watering(int amountOfWater) {

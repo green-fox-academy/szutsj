@@ -7,16 +7,11 @@
 //
 
 public class Flower extends Plant{
-
-  public Flower(){
-    super();
-  }
+  public static final int minimumWaterlevel = 5;
+  public static final double absorsblevel = 0.75;
 
   public Flower(String color) {
-      this.setWaterlevel(0);
-      this.setAbsorblevel(0.75);
-      this.setMinimumWaterlevel(5);
-      this.setColor(color);
+      super(color, absorsblevel, minimumWaterlevel);
   }
 
 }

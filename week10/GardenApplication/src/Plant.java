@@ -18,11 +18,17 @@
 //
 
 
-public class Plant {
+public abstract class Plant {
   private int waterlevel;
   private double absorblevel;
   private int minimumWaterlevel;
   private String color;
+
+  public Plant(String color, double absorblevel, int minimumWaterlevel){
+    this.color = color;
+    this.absorblevel = absorblevel;
+    this.minimumWaterlevel = minimumWaterlevel;
+    }
 
   public String getColor() {
     return color;

@@ -26,10 +26,10 @@ public class Main {
   public static void main(String[] args) {
     Garden first = new Garden();
 
-    first.addPlantToGarden("FLOWER", "yellow");
-    first.addPlantToGarden("FLOWER", "blue");
-    first.addPlantToGarden("Tree", "purple");
-    first.addPlantToGarden("Tree", "orange");
+    first.addPlantToGarden(new Flower("yellow"));
+    first.addPlantToGarden(new Flower("blue"));
+    first.addPlantToGarden(new Tree("purlpe"));
+    first.addPlantToGarden(new Flower("orange"));
 
     first.print();
 
@@ -38,7 +38,6 @@ public class Main {
 
     first.watering(70);
     first.print();
-
   }
 
 }

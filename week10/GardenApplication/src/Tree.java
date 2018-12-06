@@ -5,16 +5,12 @@
 //
 
 public class Tree extends Plant {
-
-  public Tree(){
-    super();
-  }
+    public static final int minimumWaterlevel = 10;
+    public static final double absorsblevel = 0.4;
 
   public Tree(String color) {
-    this.setWaterlevel(0);
-    this.setAbsorblevel(0.4);
-    this.setMinimumWaterlevel(10);
-    this.setColor(color);
+    super(color, absorsblevel, minimumWaterlevel);
   }
+
 
 }
