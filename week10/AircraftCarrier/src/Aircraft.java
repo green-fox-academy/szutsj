@@ -31,7 +31,7 @@
 //
 
 
-public class Aircraft {
+public abstract class Aircraft {
   private int ammo;
   private int maxAmmo;
   private int baseDamage;

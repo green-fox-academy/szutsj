@@ -100,24 +100,30 @@ public class Carrier {
 
   public String getStatus(){
     String status = "";
-    int totalDamage = 0;
 
     if (this.health <= 0) {
       status += "It's dead Jim :( ";
     } else {
-      status += "HP: " + this.health + ", Aircraft count: " + this.carrier.size() + ", Ammo storage: " + this.storedAmmos + ", Total damage: ";
+      status += "HP: " + this.health +
+                ", Aircraft count: " + this.carrier.size() +
+                ", Ammo storage: " + this.storedAmmos +
+                ", Total damage: " + getTotalDamageAmount() + "\n" +
+                "Aircrafts: " + "\n";
 
       for (Aircraft aircraft : this.carrier){
-        totalDamage += aircraft.getAllDamage();
-      }
-
-      status += totalDamage + "\n" + "Aircrafts: " + "\n";
-
-      for (Aircraft aircraft : this.carrier){
-        status += "Tpye: " + aircraft.getType() + ", Ammo: " + aircraft.getAmmo() + ", Base damage: " + aircraft.getBaseDamage() + ", All damage: " + aircraft.getAllDamage() + "\n";
+        status += aircraft.getStatus();
       }
     }
     return status;
+  }
+
+  private int getTotalDamageAmount(){
+    int totalDamage = 0;
+
+    for (Aircraft aircraft : this.carrier){
+      totalDamage += aircraft.getAllDamage();
+    }
+    return totalDamage;
   }
 
 }
