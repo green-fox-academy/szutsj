@@ -17,6 +17,7 @@ public class F35 extends Aircraft{
     this.setType("F35");
   }
 
+  @Override
   public boolean isPriority(){
     return true;
   }

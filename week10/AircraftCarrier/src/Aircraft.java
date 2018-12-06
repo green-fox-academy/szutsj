@@ -104,8 +104,6 @@ public abstract class Aircraft {
     return status;
   }
 
-  public boolean isPriority(){
-    return false;
-  }
+  abstract boolean isPriority();
 
 }

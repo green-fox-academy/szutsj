@@ -15,6 +15,7 @@ public class F16 extends Aircraft {
     this.setType("F16");
   }
 
+  @Override
   public boolean isPriority(){
     return false;
   }
