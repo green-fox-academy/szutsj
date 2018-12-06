@@ -27,6 +27,14 @@ public class Garden {
 
   public void watering(int amountOfWater) {
     System.out.println("Watering with " + amountOfWater);
+        for (Plant plant : plants) {
+      if (plant.needsWatering()) {
+        plant.watering(amountOfWater / getThrirstyPlantsAmount());
+      }
+    }
+  }
+
+  public int getThrirstyPlantsAmount(){
     int numberOfPlantsToWater = 0;
 
     for (Plant plant : plants) {
@@ -34,12 +42,7 @@ public class Garden {
         numberOfPlantsToWater++;
       }
     }
-
-    for (Plant plant : plants) {
-      if (plant.needsWatering()) {
-        plant.watering(amountOfWater / numberOfPlantsToWater);
-      }
-    }
+    return numberOfPlantsToWater;
   }
 
   public void print(){
