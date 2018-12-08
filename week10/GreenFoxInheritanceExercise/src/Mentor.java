@@ -13,7 +13,7 @@
 //
 
 
-public class Mentor extends Person {
+public class Mentor extends Person implements Cloneable {
   private String level;
 
   public Mentor(String name, int age, String gender, String level) {
@@ -35,4 +35,13 @@ public class Mentor extends Person {
   public void getGoal() {
     System.out.println("My goal is: Educate brilliant junior software developers");
   }
+
+  public Object clone(){
+    try {
+      return super.clone();
+    } catch(CloneNotSupportedException e) {
+      return this;
+    }
+  }
+
 }

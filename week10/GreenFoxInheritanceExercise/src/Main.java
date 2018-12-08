@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.lang.Cloneable;
 
 public class Main {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws CloneNotSupportedException {
 
 
     ArrayList<Person> people = new ArrayList<>();
@@ -45,5 +46,19 @@ public class Main {
     awesome.addMentor(mentor);
     awesome.addMentor(gandhi);
     awesome.info();
+
+    System.out.println();
+    Student johnTheClone = (Student)john.clone();
+    johnTheClone.introduce();
+
+    System.out.println();
+    Mentor gandhiTheClone = (Mentor)gandhi.clone();
+    gandhiTheClone.introduce();
+
+    System.out.println();
+    System.out.println(john);
+    System.out.println(johnTheClone);
+    System.out.println(gandhi);
+    System.out.println(gandhiTheClone);
   }
 }
