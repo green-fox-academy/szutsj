@@ -21,10 +21,22 @@ public class Main {
 
     System.out.println(dominoes);
 
+    List<Thing> fleet = new ArrayList<>();
+
+    fleet.add(new Thing("Get Milk"));
+    fleet.add(new Thing("Remove obstacles"));
+    fleet.add(new Thing("Stand up"));
+    fleet.add(new Thing("Eat lunch"));
+
+    fleet.get(1).complete();
+    fleet.get(3).complete();
+
+    System.out.println(fleet);
+
+    Collections.sort(fleet);
+    System.out.println(fleet);
 
 // the order of your dominoes should look like this: [[1,5], [2,4], [4,6], [5,2], [6,7], [7,1]]
-
-
 
   }
 }
