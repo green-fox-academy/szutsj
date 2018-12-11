@@ -19,7 +19,10 @@ public class Main {
 
     Collections.sort(dominoes);
 
-    System.out.println(dominoes);
+    for (Domino d : dominoes) {
+      d.printAllFields();
+    }
+
 
     List<Thing> fleet = new ArrayList<>();
 
@@ -31,12 +34,15 @@ public class Main {
     fleet.get(1).complete();
     fleet.get(3).complete();
 
-    System.out.println(fleet);
+    for (Domino d : dominoes) {
+      d.printAllFields();
+    }
 
     Collections.sort(fleet);
-    System.out.println(fleet);
 
-// the order of your dominoes should look like this: [[1,5], [2,4], [4,6], [5,2], [6,7], [7,1]]
-
+    for (Thing t : fleet) {
+      t.printAllFields();
+    }
   }
+
 }

@@ -1,6 +1,6 @@
 import java.lang.Boolean;
 
-public class Thing implements Comparable<Thing> {
+public class Thing implements Comparable<Thing>, Printable {
   String name;
   boolean completed;
 
@@ -24,5 +24,11 @@ public class Thing implements Comparable<Thing> {
       diff = this.name.compareTo(other.name);
     }
     return diff;
+  }
+
+  @Override
+  public void printAllFields() {
+    System.out.println(this.name);
+    System.out.println(this.completed);
   }
 }
