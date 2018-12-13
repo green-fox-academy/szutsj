@@ -41,4 +41,65 @@ public class AnagramTest {
     assertFalse(result);
   }
 
+  @Test
+  public void testCheckWetherAnagramsWithEmptyStrings(){
+    String input1 = "";
+    String input2 = "";
+
+    boolean result = test.checkWetherAnagrams(input1, input2);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void testCheckWetherAnagramsWithFirstEmptyString(){
+    String input1 = "";
+    String input2 = "l";
+
+    boolean result = test.checkWetherAnagrams(input1, input2);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void testCheckWetherAnagramsWithSecondEmptyStrings(){
+    String input1 = "l";
+    String input2 = "";
+
+    boolean result = test.checkWetherAnagrams(input1, input2);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void testCheckWetherAnagramsWith2Null(){
+    String input1 = null;
+    String input2 = null;
+
+    boolean result = test.checkWetherAnagrams(input1, input2);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void testCheckWetherAnagramsWithFirstNull(){
+    String input1 = null;
+    String input2 = "Lali";
+
+    boolean result = test.checkWetherAnagrams(input1, input2);
+
+    assertFalse(result);
+  }
+
+  @Test
+  public void testCheckWetherAnagramsWithSecondNull(){
+    String input1 = "Lali";
+    String input2 = null;
+
+    boolean result = test.checkWetherAnagrams(input1, input2);
+
+    assertFalse(result);
+  }
+
 }
+
