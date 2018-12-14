@@ -28,4 +28,18 @@ public class SharpieTest {
     assertEquals(expectedResult, result);
   }
 
+  @Test
+  public void testToStringMethod(){
+    Sharpie test1 = new Sharpie("blue", 10F);
+    String expectedResult = "Sharpie{" +
+        "color='" + test1.color + '\'' +
+        ", width=" + test1.width +
+        ", inkAmout=" + test1.inkAmout +
+        '}';
+
+    String result = test1.toString();
+
+    assertEquals(expectedResult, result);
+  }
+
 }
