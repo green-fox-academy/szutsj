@@ -24,12 +24,6 @@ public class Task implements Serializable {
 
   @Override
   public String toString() {
-    String string = "";
-    if (isCompleted()){
-      string += "[X]" + this.description;
-    } else {
-      string += "[ ]" + this.description;
-    }
-    return string;
+    return isCompleted() ? "[X] " + this.description : "[ ] " + this.description;
   }
 }

@@ -7,42 +7,35 @@ public class ListOfTasks implements Serializable {
   private String filename = "todolist.txt";
 
   public void add(String description){
-    if (!FileHandling.fileNotExist(filename)){
-      toDoList = FileHandling.readingFile(filename, toDoList);
-    }
+    ListOfTasks list = FileHandling.readingFile(filename);
     Task task = new Task(description);
-    toDoList.add(task);
-    FileHandling.writingFile(filename, toDoList);
+    list.toDoList.add(task);
+    FileHandling.writingFile(filename, list);
   }
 
   public void remove(int index){
-    toDoList = FileHandling.readingFile(filename, toDoList);
-    toDoList.remove(index);
-    FileHandling.writingFile(filename, toDoList);
+    ListOfTasks list = FileHandling.readingFile(filename);
+    list.toDoList.remove(index);
+    FileHandling.writingFile(filename, list);
   }
 
   public void list(){
-    if (FileHandling.fileNotExist(filename)){
+    ListOfTasks list = FileHandling.readingFile(filename);
+    if (list.toDoList.size() == 0){
       System.out.println("Nothing to do");
     } else {
-      toDoList = FileHandling.readingFile(filename, toDoList);
-      if (toDoList.size() == 0){
-        System.out.println("Nothing to do");
-      } else {
-        System.out.println(toString());
-      }
+      System.out.println(list.toString());
     }
   }
 
   public void complete(int index){
-    FileHandling.readingFile(filename, toDoList);
-    toDoList = FileHandling.readingFile(filename, toDoList);
-    if (toDoList.get(index).isCompleted()){
-      toDoList.get(index).setCompleted(false);
+    ListOfTasks list = FileHandling.readingFile(filename);
+    if (list.toDoList.get(index).isCompleted()){
+      list.toDoList.get(index).setCompleted(false);
     } else {
-      toDoList.get(index).setCompleted(true);
+      list.toDoList.get(index).setCompleted(true);
     }
-    FileHandling.writingFile(filename, toDoList);
+    FileHandling.writingFile(filename, list);
   }
 
   public String usage(){
@@ -63,8 +56,8 @@ public class ListOfTasks implements Serializable {
   public String toString() {
     String string = "";
     string += "My to-do-list: \n";
-    for (Task task : toDoList){
-      string += task.toString() + "\n";
+    for (int i = 0; i < toDoList.size() ; i++) {
+      string += i + "-" + toDoList.get(i).toString() + "\n";
     }
     return string;
   }
