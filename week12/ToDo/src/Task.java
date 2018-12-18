@@ -10,10 +10,6 @@ public class Task implements Serializable {
     this.completed = false;
   }
 
-  public String getDescription() {
-    return description;
-  }
-
   public boolean isCompleted() {
     return completed;
   }
