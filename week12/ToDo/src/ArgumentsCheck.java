@@ -27,14 +27,14 @@ public class ArgumentsCheck {
     } else  if (args.length > 2){
       System.out.println("Please, remove only one index each time");
     } else {
-       try{
-         Integer index = Integer.parseInt(args[1]);
-         list.remove(index);
-       } catch (NumberFormatException e){
-         System.out.println("Unable to remove: index is not a number.");
-       } catch (IndexOutOfBoundsException e){
-         System.out.println("Unable to remove: index is out of bound.");
-       }
+      try{
+        Integer index = Integer.parseInt(args[1]);
+        list.remove(index);
+      } catch (NumberFormatException e){
+        System.out.println("Unable to remove: index is not a number.");
+      } catch (IndexOutOfBoundsException e){
+        System.out.println("Unable to remove: index is out of bound.");
+      }
     }
   }
 
@@ -50,8 +50,8 @@ public class ArgumentsCheck {
       } catch (NumberFormatException e){
         System.out.println("Unable to check: index is not a number.");
       } catch (IndexOutOfBoundsException e){
-      System.out.println("Unable to remove: index is out of bound.");
-    }
+        System.out.println("Unable to remove: index is out of bound.");
+      }
     }
   }
 

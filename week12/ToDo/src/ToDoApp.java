@@ -20,6 +20,6 @@ public class ToDoApp {
       System.out.println("Sorry, there is no such option. Please, see options below:");
       System.out.println(list.usage());
     }
-
   }
+
 }

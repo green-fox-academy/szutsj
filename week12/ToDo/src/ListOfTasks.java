@@ -40,16 +40,12 @@ public class ListOfTasks implements Serializable {
 
   public String usage(){
     return  " Command Line Todo application \n" +
-            " ============================= \n" +
-            " Command line arguments: \n " +
-            "  -l   Lists all the tasks \n " +
-            "  -a   Adds a new task \n " +
-            "  -r   Removes a task \n " +
-            "  -c   Completes a task \n ";
-  }
-
-  public void outOfBoundError(ArrayList<Task> list){
-
+        " ============================= \n" +
+        " Command line arguments: \n " +
+        "  -l   Lists all the tasks \n " +
+        "  -a   Adds a new task \n " +
+        "  -r   Removes a task \n " +
+        "  -c   Completes a task \n ";
   }
 
   @Override
