@@ -36,8 +36,11 @@ public class ListOfTasks implements Serializable {
     ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
     if (instanceOfListOfTasks.listOfTasksArrayListField.get(index).isCompleted()){
       instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompleted(false);
+      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompletedAt();
     } else {
       instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompleted(true);
+      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompletedAt();
+
     }
     FileHandling.writingFile(filename, instanceOfListOfTasks);
   }
@@ -55,9 +58,10 @@ public class ListOfTasks implements Serializable {
   @Override
   public String toString() {
     String string = "";
-    string += "My to-do-instanceOfListOfTasks: \n";
-    for (int i = 0; i < listOfTasksArrayListField.size() ; i++) {
-      string += i + "-" + listOfTasksArrayListField.get(i).toString() + "\n";
+    string += "My to-do-list: \n";
+
+    for (Task task: listOfTasksArrayListField) {
+       string += task.toString() + "\n";
     }
     return string;
   }
