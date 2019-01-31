@@ -2,6 +2,10 @@ import java.io.Serializable;
 
 public class Task implements Serializable {
 
+  public String getDescription() {
+    return description;
+  }
+
   private String description;
   private boolean completed;
 

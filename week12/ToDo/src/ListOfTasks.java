@@ -3,39 +3,43 @@ import java.util.ArrayList;
 
 public class ListOfTasks implements Serializable {
 
-  private ArrayList<Task> toDoList = new ArrayList<Task>();
+  private ArrayList<Task> listOfTasksArrayListField = new ArrayList<Task>();
   private String filename = "todolist.txt";
 
+  public ArrayList<Task> getListOfTasksArrayListField() {
+    return listOfTasksArrayListField;
+  }
+
   public void add(String description){
-    ListOfTasks list = FileHandling.readingFile(filename);
+    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
     Task task = new Task(description);
-    list.toDoList.add(task);
-    FileHandling.writingFile(filename, list);
+    instanceOfListOfTasks.listOfTasksArrayListField.add(task);
+    FileHandling.writingFile(filename, instanceOfListOfTasks);
   }
 
   public void remove(int index){
-    ListOfTasks list = FileHandling.readingFile(filename);
-    list.toDoList.remove(index);
-    FileHandling.writingFile(filename, list);
+    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
+    instanceOfListOfTasks.listOfTasksArrayListField.remove(index);
+    FileHandling.writingFile(filename, instanceOfListOfTasks);
   }
 
   public void list(){
-    ListOfTasks list = FileHandling.readingFile(filename);
-    if (list.toDoList.size() == 0){
+    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
+    if (instanceOfListOfTasks.listOfTasksArrayListField.size() == 0){
       System.out.println("Nothing to do");
     } else {
-      System.out.println(list.toString());
+      System.out.println(instanceOfListOfTasks.toString());
     }
   }
 
   public void complete(int index){
-    ListOfTasks list = FileHandling.readingFile(filename);
-    if (list.toDoList.get(index).isCompleted()){
-      list.toDoList.get(index).setCompleted(false);
+    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
+    if (instanceOfListOfTasks.listOfTasksArrayListField.get(index).isCompleted()){
+      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompleted(false);
     } else {
-      list.toDoList.get(index).setCompleted(true);
+      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompleted(true);
     }
-    FileHandling.writingFile(filename, list);
+    FileHandling.writingFile(filename, instanceOfListOfTasks);
   }
 
   public String usage(){
@@ -51,9 +55,9 @@ public class ListOfTasks implements Serializable {
   @Override
   public String toString() {
     String string = "";
-    string += "My to-do-list: \n";
-    for (int i = 0; i < toDoList.size() ; i++) {
-      string += i + "-" + toDoList.get(i).toString() + "\n";
+    string += "My to-do-instanceOfListOfTasks: \n";
+    for (int i = 0; i < listOfTasksArrayListField.size() ; i++) {
+      string += i + "-" + listOfTasksArrayListField.get(i).toString() + "\n";
     }
     return string;
   }
