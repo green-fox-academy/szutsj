@@ -1,0 +1,36 @@
+.loginform{
+    background-color: white;
+    width: 440px;
+    height: 500px;
+    padding: 20px;
+    margin:auto;
+    font-family: Monospaced, sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+label[for ="username"]{
+    font-size: 5px;
+}
+
+input[type = "password"]{
+
+}
+
+link{
+    text-align: left;
+}
+
+label[for ="password"]{
+    font-size: 5px;
+}
+
+input[type ="submit"]{
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    color:white;
+    border-radius: 50px;
+    font-size: 10px;
+    font: bold;
+}
