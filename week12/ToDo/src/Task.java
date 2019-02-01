@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 public class Task implements Serializable {
-  private static int idCounter = 0;
   private String description;
   private int id;
   private LocalDateTime createdAt;
@@ -12,8 +11,7 @@ public class Task implements Serializable {
 
   public Task(String description){
     this.description = description;
-    idCounter++;
-    id = idCounter;
+    id = checkLastId() + 1;
     createdAt = LocalDateTime.now();
   }
 
@@ -27,6 +25,26 @@ public class Task implements Serializable {
             TimeUnit.HOURS.toHours(TimeUnit.MILLISECONDS.toDays(millis)),
         TimeUnit.MILLISECONDS.toMinutes(millis) -
             TimeUnit.MINUTES.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)));
+  }
+
+  private int checkLastId(){
+    ListOfTasks tasks = FileHandling.readingFile(ListOfTasks.getFilename());
+    int max = getMaxFromList(tasks);
+    return max;
+  }
+
+  private int getMaxFromList(ListOfTasks tasks){
+    int max = 0;
+    if (tasks.getListOfTask().size() == 0){
+      return max;
+    } else {
+      for (Task task: tasks.getListOfTask()){
+        if (task.getId() > max){
+          max = task.getId();
+        }
+      }
+    }
+    return max;
   }
 
   private boolean isCompleted(){

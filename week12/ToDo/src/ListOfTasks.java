@@ -4,11 +4,7 @@ import java.util.ArrayList;
 public class ListOfTasks implements Serializable {
 
   private ArrayList<Task> listOfTask = new ArrayList<Task>();
-  private String filename = "todolist.txt";
-
-  public ArrayList<Task> getListOfTask() {
-    return listOfTask;
-  }
+  private static String filename = "todolist.txt";
 
   public void add(String description){
     ListOfTasks tasks = FileHandling.readingFile(filename);
@@ -89,6 +85,14 @@ public class ListOfTasks implements Serializable {
       string += task.toString() + "\n";
     }
     return string;
+  }
+
+  public static String getFilename() {
+    return filename;
+  }
+
+  public ArrayList<Task> getListOfTask() {
+    return listOfTask;
   }
 
 }
