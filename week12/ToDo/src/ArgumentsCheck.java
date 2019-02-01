@@ -1,17 +1,17 @@
 public class ArgumentsCheck {
 
-  ListOfTasks instanceOfListOfTasks;
+  ListOfTasks tasks;
   String [] args;
 
   public ArgumentsCheck(String[] args){
-    instanceOfListOfTasks = new ListOfTasks();
+    tasks = new ListOfTasks();
     this.args = args;
     checkingArgument();
   }
 
   private void checkingArgument(){
    if (args.length == 0){
-    System.out.println(instanceOfListOfTasks.usage());
+    System.out.println(tasks.usage());
   } else if (args[0].equals("-l")){
     argumentL(args);
   } else if (args[0].equals("-a")){
@@ -22,16 +22,16 @@ public class ArgumentsCheck {
     argumentC(args);
   } else {
     System.out.println("Sorry, there is no such option. Please, see options below:");
-    System.out.println(instanceOfListOfTasks.usage());
+    System.out.println(tasks.usage());
   }
 }
 
   private void argumentL(String[] args){
     if (args.length == 1){
-      instanceOfListOfTasks.list();
+      tasks.list();
     } else {
       System.out.println("For listing no plus argument needed");
-      instanceOfListOfTasks.list();
+      tasks.list();
     }
   }
 
@@ -41,7 +41,7 @@ public class ArgumentsCheck {
     } else  if (args.length > 2){
       System.out.println("Please, add only one task each time");
     } else {
-      instanceOfListOfTasks.add(args[1]);
+      tasks.add(args[1]);
     }
   }
 
@@ -53,7 +53,7 @@ public class ArgumentsCheck {
     } else {
       try{
         Integer index = Integer.parseInt(args[1]);
-        instanceOfListOfTasks.remove(index);
+        tasks.remove(index);
       } catch (NumberFormatException e){
         System.out.println("Unable to remove: index is not a number.");
       } catch (IndexOutOfBoundsException e){
@@ -70,7 +70,7 @@ public class ArgumentsCheck {
     } else {
       try{
         Integer index = Integer.parseInt(args[1]);
-        instanceOfListOfTasks.complete(index);
+        tasks.complete(index);
       } catch (NumberFormatException e){
         System.out.println("Unable to check: index is not a number.");
       } catch (IndexOutOfBoundsException e){

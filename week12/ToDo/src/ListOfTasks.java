@@ -3,39 +3,39 @@ import java.util.ArrayList;
 
 public class ListOfTasks implements Serializable {
 
-  private ArrayList<Task> listOfTasksArrayListField = new ArrayList<Task>();
+  private ArrayList<Task> listOfTask = new ArrayList<Task>();
   private String filename = "todolist.txt";
 
-  public ArrayList<Task> getListOfTasksArrayListField() {
-    return listOfTasksArrayListField;
+  public ArrayList<Task> getListOfTask() {
+    return listOfTask;
   }
 
   public void add(String description){
-    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
+    ListOfTasks tasks = FileHandling.readingFile(filename);
     Task task = new Task(description);
-    instanceOfListOfTasks.listOfTasksArrayListField.add(task);
-    FileHandling.writingFile(filename, instanceOfListOfTasks);
+    tasks.listOfTask.add(task);
+    FileHandling.writingFile(filename, tasks);
   }
 
   public void remove(int index){
-    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
-    instanceOfListOfTasks.listOfTasksArrayListField.remove(index);
-    FileHandling.writingFile(filename, instanceOfListOfTasks);
+    ListOfTasks tasks = FileHandling.readingFile(filename);
+    tasks.listOfTask.remove(index);
+    FileHandling.writingFile(filename, tasks);
   }
 
   public void list(){
-    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
-    if (instanceOfListOfTasks.listOfTasksArrayListField.size() == 0){
+    ListOfTasks tasks = FileHandling.readingFile(filename);
+    if (tasks.listOfTask.size() == 0){
       System.out.println("Nothing to do");
     } else {
-      System.out.println(instanceOfListOfTasks.toString());
+      System.out.println(tasks.toString());
     }
   }
 
   public void complete(int index){
-    ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
-    instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompletedAt();
-    FileHandling.writingFile(filename, instanceOfListOfTasks);
+    ListOfTasks tasks = FileHandling.readingFile(filename);
+    tasks.listOfTask.get(index).setCompletedAt();
+    FileHandling.writingFile(filename, tasks);
   }
 
   public String usage(){
@@ -53,7 +53,7 @@ public class ListOfTasks implements Serializable {
     String string = "";
     string += "My to-do-list: \n";
 
-    for (Task task: listOfTasksArrayListField) {
+    for (Task task: listOfTask) {
        string += task.toString() + "\n";
     }
     return string;

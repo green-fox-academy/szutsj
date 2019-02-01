@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Task implements Serializable {
-  private static final AtomicInteger count = new AtomicInteger(0);
+  private AtomicInteger count = new AtomicInteger(0);
   private String description;
   private final int id;
   private LocalDateTime createdAt;

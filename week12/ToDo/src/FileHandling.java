@@ -6,18 +6,18 @@ import java.io.ObjectOutputStream;
 public abstract class FileHandling {
 
   public static ListOfTasks readingFile(String filename){
-    ListOfTasks instanceOfListOfTasks = new ListOfTasks();
+    ListOfTasks tasks = new ListOfTasks();
     try {
       FileInputStream fileInputStream
           = new FileInputStream(filename);
       ObjectInputStream objectInputStream
           = new ObjectInputStream(fileInputStream);
-      instanceOfListOfTasks = (ListOfTasks) objectInputStream.readObject();
+      tasks = (ListOfTasks) objectInputStream.readObject();
       objectInputStream.close();
       } catch (Exception e) {
       //System.out.println(e);
     } finally {
-      return instanceOfListOfTasks;
+      return tasks;
     }
   }
 
