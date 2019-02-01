@@ -2,18 +2,18 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Task implements Serializable {
-  private AtomicInteger count = new AtomicInteger(0);
+  private static int idCounter = 0;
   private String description;
-  private final int id;
+  private int id;
   private LocalDateTime createdAt;
   private LocalDateTime completedAt;
 
   public Task(String description){
     this.description = description;
-    id = count.incrementAndGet();
+    idCounter++;
+    id = idCounter;
     createdAt = LocalDateTime.now();
   }
 
@@ -64,6 +64,10 @@ public class Task implements Serializable {
 
   public void setCompletedAt() {
     completedAt = LocalDateTime.now();
+  }
+
+  public void setCompletedAt(LocalDateTime localDateTime) {
+    completedAt = localDateTime;
   }
 
   @Override

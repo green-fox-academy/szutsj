@@ -17,10 +17,41 @@ public class ListOfTasks implements Serializable {
     FileHandling.writingFile(filename, tasks);
   }
 
-  public void remove(int index){
+  public void remove(int id){
     ListOfTasks tasks = FileHandling.readingFile(filename);
-    tasks.listOfTask.remove(index);
+    removeById(tasks, id);
     FileHandling.writingFile(filename, tasks);
+  }
+
+  public void update(int id, String desciption){
+    ListOfTasks tasks = FileHandling.readingFile(filename);
+    updateDescription(tasks, id, desciption);
+    FileHandling.writingFile(filename, tasks);
+  }
+
+  private void updateDescription(ListOfTasks tasks, int id, String description) {
+    for (Task task : tasks.listOfTask) {
+      if (task.getId() == id) {
+        task.setDescription(description);
+        task.setCompletedAt(null);
+      }
+    }
+  }
+
+  private void removeById(ListOfTasks tasks, int id){
+    for (int i = 0; i < tasks.listOfTask.size(); i++) {
+      if (tasks.listOfTask.get(i).getId() == id) {
+        tasks.listOfTask.remove(i);
+      }
+    }
+  }
+
+  private void completeById(ListOfTasks tasks, int id){
+    for (int i = 0; i < tasks.listOfTask.size(); i++) {
+      if (tasks.listOfTask.get(i).getId() == id) {
+        tasks.listOfTask.get(i).setCompletedAt();
+      }
+    }
   }
 
   public void list(){
@@ -32,9 +63,9 @@ public class ListOfTasks implements Serializable {
     }
   }
 
-  public void complete(int index){
+  public void complete(int id){
     ListOfTasks tasks = FileHandling.readingFile(filename);
-    tasks.listOfTask.get(index).setCompletedAt();
+    completeById(tasks, id);
     FileHandling.writingFile(filename, tasks);
   }
 
@@ -45,6 +76,7 @@ public class ListOfTasks implements Serializable {
         "  -l   Lists all the tasks \n " +
         "  -a   Adds a new task \n " +
         "  -r   Removes a task \n " +
+        "  -u   Updates a task \n " +
         "  -c   Completes a task \n ";
   }
 
@@ -54,7 +86,7 @@ public class ListOfTasks implements Serializable {
     string += "My to-do-list: \n";
 
     for (Task task: listOfTask) {
-       string += task.toString() + "\n";
+      string += task.toString() + "\n";
     }
     return string;
   }
