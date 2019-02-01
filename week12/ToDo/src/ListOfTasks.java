@@ -34,14 +34,7 @@ public class ListOfTasks implements Serializable {
 
   public void complete(int index){
     ListOfTasks instanceOfListOfTasks = FileHandling.readingFile(filename);
-    if (instanceOfListOfTasks.listOfTasksArrayListField.get(index).isCompleted()){
-      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompleted(false);
-      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompletedAt();
-    } else {
-      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompleted(true);
-      instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompletedAt();
-
-    }
+    instanceOfListOfTasks.listOfTasksArrayListField.get(index).setCompletedAt();
     FileHandling.writingFile(filename, instanceOfListOfTasks);
   }
 

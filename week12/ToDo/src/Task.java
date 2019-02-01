@@ -1,20 +1,41 @@
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Task implements Serializable {
   private static final AtomicInteger count = new AtomicInteger(0);
   private String description;
-  private boolean completed;
   private final int id;
   private LocalDateTime createdAt;
   private LocalDateTime completedAt;
 
   public Task(String description){
     this.description = description;
-    this.completed = false;
     id = count.incrementAndGet();
     createdAt = LocalDateTime.now();
+  }
+
+  public String completionTime(){
+    Duration duration = Duration.between(createdAt, completedAt);
+    long millis = duration.toMillis();
+
+    return String.format(", completed in  %02d days, %02d hours, %02d minutes",
+        TimeUnit.MILLISECONDS.toDays(millis),
+        TimeUnit.MILLISECONDS.toHours(millis) -
+            TimeUnit.HOURS.toHours(TimeUnit.MILLISECONDS.toDays(millis)),
+        TimeUnit.MILLISECONDS.toMinutes(millis) -
+            TimeUnit.MINUTES.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)));
+  }
+
+  private boolean isCompleted(){
+    if (completedAt == null){
+      return false;
+    } else if(completedAt.isBefore(LocalDateTime.now())){
+      return true;
+    }
+    return false;
   }
 
   public String getDescription() {
@@ -45,18 +66,9 @@ public class Task implements Serializable {
     completedAt = LocalDateTime.now();
   }
 
-  public boolean isCompleted() {
-    return completed;
-  }
-
-  public void setCompleted(boolean completed) {
-    this.completed = completed;
-  }
-
   @Override
   public String toString() {
-    return completed ? id + " - " + "[x] " + this.description +
-        " " : id + " - " + "[ ] " + this.description;
+    return isCompleted() ? id + " - " + "[x] " + this.description + completionTime() : id + " - " + "[ ] " + this.description;
   }
 
 }
