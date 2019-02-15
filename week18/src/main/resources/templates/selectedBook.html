@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit or Delete Book</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>
+    <div>
+        <div th:if="${error}" th:text="${error}"></div>
+        <form th:if="!${error}" th:object="${book}" th:action="'/book/'+${book.getId()}+'/edit'" method="post">
+            <input type="text" th:field="*{author}">
+            <input type="text" th:field="*{title}">
+            <input type="text" th:field="*{publisherCo}">
+            <input type="text" th:field="*{releaseYear}"><br>
+            <input type="submit" value="EDIT">
+        </form>
+        <form th:action="'/book/'+${book.getId()}+'/delete'" method="post">
+            <input type="submit" value="DELETE BOOK" >
+        </form>
+    </div>
+</div>
+</body>
+</html>

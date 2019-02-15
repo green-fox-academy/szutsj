@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booklist</title>
+</head>
+<body>
+<div>
+    <a href="/book/list">List of Books</a>
+</div>
+<div>
+    <form action="/book/list" method="post">
+        <input type="text" placeholder="Search by author" name="author">
+        <input type="text" placeholder="Search by title" name="title">
+        <input type="text" placeholder="Search by publisher" name="publisherCo">
+        <input type="submit" value="OK">
+    </form>
+</div>
+</body>
+</html>

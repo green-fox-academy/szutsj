@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of books</title>
+</head>
+<body>
+<div>
+    <div th:if="${error}" th:text="${error}"></div>
+    <div th:if="!${error}" th:each="book : ${books}" >
+        <a th:href="'/book/' +${book.getId()}+'/details'" th:text="${book.id}+ ' - ' +${book.author} + ' - ' +${book.title} + ' (' + ${book.releaseYear} + ', ' +${book.publisherCo}+') '"></a>
+    </div>
+    <form action="/book/add" method="post">
+        <input  type="text" name="author" placeholder="author">
+        <input  type="text" name="title" placeholder="title">
+        <input  type="text" name="publisherCo" placeholder="publisher co.">
+        <input  type="text" name="releaseYear" placeholder="release year">
+        <input type="submit" value="ADD">
+    </form>
+</div>
+</body>
+</html>
