@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pirate App - Status of your captain</title>
+</head>
+<body>
+<div >
+    <div th:object="${captain}">
+    <h1 th:text="'Pirate - '+*{getName()}"></h1>
+    <div th:text="'Capitan: '+*{isCaptain()}"></div>
+    <div th:text="'is alive: '+*{isAlive()}"></div>
+    <div th:text="'is passed out: '+*{isPassedOut()}"></div>
+    <div th:text="'has '+*{getRumsDrunken()}+' rum drunken(s).'"></div>
+     <div>
+         <img th:src="*{getPictureSource()}" alt="Some captain" align="middle">
+    </div>
+        <div>
+        <a href="/pirate/game with pirate/bar">LET'S GO TO THE BAR</a>
+            <a href="/pirate/game with pirate/fight">LET'S FIGHT</a>
+        </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IN THE BAR</title>
+</head>
+<body>
+<form action="/pirate/game with pirate/bar" method="post">
+    <input type="image" src="../static/pirates/hook.jpg" alt="valami söröskorsó képe lenne..."/>
+</form>
+
+<div th:object="${captain}">
+    <h1 th:text="'Pirate - '+*{getName()}"></h1>
+    <div th:text="'Capitan: '+*{isCaptain()}"></div>
+    <div th:text="'is alive: '+*{isAlive()}"></div>
+    <div th:text="'is passed out: '+*{isPassedOut()}"></div>
+    <div th:text="'has '+*{getRumsDrunken()}+' rum drunken(s).'"></div>
+    <div>
+        <img th:src="*{getPictureSource()}" alt="Some captain" align="middle">
+    </div>
+</div>
+<div th:text="${status}"><div>
+</body>
+</html>
