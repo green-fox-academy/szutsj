@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pirate App - status of your captain</title>
+    <link rel="stylesheet" href="/pirate.css" type="text/css">
+</head>
+<body background="/background.jpeg" style="color: whitesmoke">
+<div class="captain">
+    <div th:object="${captain}">
+        <h3 th:text="'Captain - '+*{getName()}"></h3>
+        <div>CAPTAIN'S STATUS:
+        <span th:if="*{isAlive() && !isPassedOut()}">
+            <img src="/alive.png" align="middle">
+        </span>
+        <span th:if="*{!isAlive()}">
+            <img src="/sceleton.png" align="middle">
+        </span>
+        <span th:if="*{isPassedOut()}">
+            <img src="/passedout.png" align="middle">
+        </span>
+        </div>
+        <div>
+            <img class="picture" th:src="*{getPictureSource()}" align="middle">
+        </div>
+        <div th:if="${captain.getRumsDrunken()!=0}">BEERS:
+        <span th:each="i: ${#numbers.sequence(0, captain.getRumsDrunken() - 1)}">
+            <img src="/beer.png" align="middle">
+        </span>
+        </div>
+    </div>
+</div>
+<div class="nextStepIcons">
+    <h3>WHAT TO DO NEXT?</h3>
+    <span>
+        <a href="/pirate/beer"><img src="/beer1.jpg"></a>
+        <a href="/pirate/fight"><img src="/fight.jpeg"></a>
+        <a href="/pirate/waterToCaptain"><img src="/waterbucket.jpeg"></a>
+        <a href="/pirate/ship"><img src="/ship.jpeg"></a>
+        <a href="/pirate/restart"><img src="/restart.jpeg"></a>
+    </span>
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pirate App - Start the game</title>
+    <link rel="stylesheet" href="pirate.css" type="text/css">
+</head>
+<body background="/background.jpeg" style="color: whitesmoke">
+<h1>Choose one captain for yourself</h1>
+<form action="/pirate/selectCaptain" method="post">
+    <label for="name">NAME</label>
+    <select id="name" name="name" size="1" >
+        <option th:each="captain: ${captainlist.getPirateList()}" th:value="${captain.getName()}" th:text="${captain.getName()}"></option>
+    </select>
+    <input type="submit" value="OK"/>
+</form>
+</body>
+</html>

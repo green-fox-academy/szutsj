@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose a captain for brawl</title>
+    <link rel="stylesheet" href="/pirate.css" type="text/css">
+</head>
+<body background="/background.jpeg" style="color: whitesmoke">
+<h1>With whom would you like to fight?</h1>
+<form action="/pirate/shipbattle1" method="post">
+    <label for="name">NAME</label>
+    <select id="name" name="name" size="1" >
+        <option th:each="enemy: ${enemies}" th:value="${enemy.getName()}" th:text="${enemy.getName()}"></option>
+    </select>
+    <input type="submit" value="OK"/>
+</form>
+</body>
+</html>

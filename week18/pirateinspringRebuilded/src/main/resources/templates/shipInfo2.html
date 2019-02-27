@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pirate App - Status of your captain</title>
+    <link rel="stylesheet" href="/pirate.css" type="text/css">
+</head>
+<body background="/background.jpeg" style="color: whitesmoke">
+<div class="captain">
+    <div th:object="${captain}">
+        <h3 th:text="'Captain - '+*{getName()}"></h3>
+        <div>CAPTAIN'S STATUS:
+        <span th:if="*{isAlive() && !isPassedOut()}">
+            <img src="/alive.png" align="middle">
+        </span>
+        <span th:if="*{!isAlive()}">
+            <img src="/sceleton.jpeg" align="middle">
+        </span>
+        <span th:if="*{isPassedOut()}">
+            <img src="/passedout.png" align="middle">
+        </span>
+        </div>
+        <div>
+            <img class="picture" th:src="*{getPictureSource()}" align="middle">
+        </div>
+        <div th:if="${captain.getRumsDrunken()!=0}">BEERS:
+            <span th:each="i: ${#numbers.sequence(0, captain.getRumsDrunken() - 1)}">
+                <img src="/beer.png" align="middle">
+            </span>
+        </div>
+         </div>
+    <div>CREW:
+        <span th:each="pirate : ${myShip.getCrew()}" th:object="${pirate}">
+        <span th:if="*{isAlive() && !isPassedOut()}">
+            <img src="/alive.png" align="middle">
+        </span>
+        <span th:if="*{!isAlive()}">
+            <img src="/sceleton.png" align="middle">
+        </span>
+        <span th:if="*{isPassedOut()}">
+            <img src="/passedout.jpeg" align="middle">
+        </span>
+    </span>
+    </div>
+    <div>TREASURE:
+        <span th:if="${myShip.getTreasure()!=0}">
+        <span th:each="i: ${#numbers.sequence(0, myShip.getTreasure() - 1)}">
+            <img src="/treasure.png" align="middle">
+        </span>
+    </span>
+    </div>
+</div>
+<div class="enemy">
+    <div th:object="${enemy}">
+        <h3 th:text="'Captain - '+*{getName()}"></h3>
+        <div>CAPTAIN'S STATUS:
+        <span th:if="*{isAlive() && !isPassedOut()}">
+                <img src="/alive.png" align="middle">
+            </span>
+        <span th:if="*{!isAlive()}">
+                <img src="/sceleton.png" align="middle">
+            </span>
+        <span th:if="*{isPassedOut()}">
+                <img src="/passedout.jpeg" align="middle">
+        </span>
+        </div>
+        <div>
+            <img class="picture" th:src="*{getPictureSource()}" align="middle">
+        </div>
+        <div th:if="${enemy.getRumsDrunken()!=0}">BEERS:
+                <span th:each="i: ${#numbers.sequence(0, enemy.getRumsDrunken() - 1)}">
+                    <img src="/beer.png" align="middle">
+                </span>
+        </div>
+            </div>
+    <div>CREW:
+        <span th:each="pirate : ${enemyShip.getCrew()}" th:object="${pirate}">
+                <span th:if="*{isAlive() && !isPassedOut()}">
+                    <img src="/alive.png" align="middle">
+                </span>
+                <span th:if="*{!isAlive()}">
+                    <img src="/sceleton.png" align="middle">
+                </span>
+                <span th:if="*{isPassedOut()}">
+                    <img src="/passedout.jpeg" align="middle">
+                </span>
+            </span>
+    </div>
+    <div>TREASURE:
+        <span th:if="${enemyShip.getTreasure()!=0}">
+                <span th:each="i: ${#numbers.sequence(0, enemyShip.getTreasure() - 1)}">
+                    <img src="/treasure.png" align="middle">
+                </span>
+            </span>
+    </div>
+</div>
+<div class="win" th:if="${win}" th:text="${win}"></div>
+<div class="nextStepIcons" th:unless="${win}">
+    <h3>WHAT TO DO NEXT?</h3>
+    <span>
+    <a href="/pirate/beer"><img src="/beer1.jpg"></a>
+    <a href="/pirate/fight"><img src="/fight.jpeg"></a>
+    <a href="/pirate/waterToCaptain"><img src="/waterbucket.jpeg"></a>
+    <a href="/pirate/newPirateToCrew"><img src="/newPirate.jpeg"></a>
+    <a th:href="${nextBattle}"><img src="/shipbattle.jpeg"></a>
+    <a th:if="${needBackIcon}" href="/pirate/shipbattle"><img src="/back.jpeg"></a>
+    <a href="/pirate/restart"><img src="/restart.jpeg"></a>
+    </span>
+</div>
+</body>
+</html>

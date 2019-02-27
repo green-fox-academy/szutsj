@@ -1,0 +1,33 @@
+.captain{
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    }
+
+.enemy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.nextStepIcons{
+    position:absolute;
+    bottom: 10px;
+    left: 400px;
+}
+
+.win{
+    position:absolute;
+    bottom: 10px;
+    left: 400px;
+}
+
+.loose{
+    position:absolute;
+    bottom: 10px;
+    left: 400px;
+}
+
+.picture{
+    border: 2px solid whitesmoke;
+}
