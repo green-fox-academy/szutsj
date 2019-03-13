@@ -1,4 +1,4 @@
-package com.greenfoxacademy.todoinspringwithdatabase.models;
+package com.greenfoxacademy.todoinspringwithdatabase.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

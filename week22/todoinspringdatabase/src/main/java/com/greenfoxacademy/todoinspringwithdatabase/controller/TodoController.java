@@ -1,14 +1,17 @@
-package com.greenfoxacademy.todoinspringwithdatabase.controllers;
+package com.greenfoxacademy.todoinspringwithdatabase.controller;
 
+import com.greenfoxacademy.todoinspringwithdatabase.repository.TodoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/todo")
 public class TodoController {
+
+  @Autowired
+  TodoRepository todoRepository;
 
   @ResponseBody
   @RequestMapping({"/", "/list"})
