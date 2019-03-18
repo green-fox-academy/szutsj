@@ -7,7 +7,13 @@
 </head>
 <body>
 <h1>TODOS FOR TODAY</h1>
-<table  th:each="todo: ${todos}" th:object="${todo}">
+<br>
+<a href="/todo/add">ADD NEW TODO TO LIST</a>
+<br>
+<br>
+<br>
+<div th:if="${none}" th:text="${none}"></div>
+<table th:unless="${none}">
         <thead>
         <tr>
             <th>ID</th>
@@ -16,7 +22,7 @@
             <th>URGENT</th>
         </tr>
         </thead>
-        <tr>
+        <tr th:each="todo: ${todos}" th:object="${todo}">
             <td th:text="*{id}"></td>
             <td th:text="*{title}"></td>
             <td th:text="*{done}"></td>

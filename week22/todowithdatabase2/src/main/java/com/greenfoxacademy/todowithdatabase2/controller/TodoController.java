@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("todo")
@@ -21,11 +24,20 @@ public class TodoController {
 
   @GetMapping({"list", "/"})
   public String list(Model model, @RequestParam (required = false) Boolean isActive){
+    List<Todo> actualList = new ArrayList<>();
+
     if (isActive != null){
-      model.addAttribute("todos", todoRepository.findByDone(!isActive));
+      actualList = todoRepository.findByDone(!isActive);
     } else if (todoRepository.findAll() != null) {
-      model.addAttribute("todos", todoRepository.findAll());
+      actualList = todoRepository.findAll();
     }
+
+    if (actualList.size() == 0){
+      model.addAttribute("none", "No todos to list");
+    } else {
+      model.addAttribute("todos", actualList);
+    }
+
     return "todoList";
   }
 
