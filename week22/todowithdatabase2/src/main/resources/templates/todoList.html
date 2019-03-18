@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>TODOS FOR TODAY</h1>
-<table>
+<table  th:each="todo: ${todos}" th:object="${todo}">
         <thead>
         <tr>
             <th>ID</th>
@@ -16,7 +16,7 @@
             <th>URGENT</th>
         </tr>
         </thead>
-        <tr  th:each="todo: ${todos}" th:object="${todo}">
+        <tr>
             <td th:text="*{id}"></td>
             <td th:text="*{title}"></td>
             <td th:text="*{done}"></td>
