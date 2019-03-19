@@ -2,7 +2,7 @@ package com.greenfoxacademy.todowithdatabase2.controller;
 
 
 import com.greenfoxacademy.todowithdatabase2.model.Todo;
-import com.greenfoxacademy.todowithdatabase2.repository.TodoRepository;
+import com.greenfoxacademy.todowithdatabase2.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +17,16 @@ import java.util.List;
 public class TodoController {
 
   @Autowired
-  TodoRepository todoRepository;
+  TodoService todoService;
 
   @GetMapping({"list", "/"})
   public String list(Model model, @RequestParam (required = false) Boolean isActive){
     List<Todo> actualList = new ArrayList<>();
 
     if (isActive != null){
-      actualList = todoRepository.findByDone(!isActive);
-    } else if (todoRepository.findAll() != null) {
-      actualList = todoRepository.findAll();
+      actualList = todoService.findByDone(!isActive);
+    } else if (todoService.findAll() != null) {
+      actualList = todoService.findAll();
     }
 
     if (actualList.size() == 0){
@@ -45,26 +45,38 @@ public class TodoController {
 
   @PostMapping("add")
   public String addNewTodo(@RequestParam String title){
-    todoRepository.save(new Todo(title));
+    todoService.save(new Todo(title));
     return "redirect:/todo/list";
   }
 
   @GetMapping("{id}/delete")
   public String delete(@PathVariable Long id){
-    todoRepository.deleteById(id);
+    todoService.deleteById(id);
     return "redirect:/todo/list";
   }
 
   @GetMapping("{id}/edit")
   public String chooseToEdit(Model model, @PathVariable Long id){
-    model.addAttribute("todo", todoRepository.findTodoById(id));
+    model.addAttribute("todo", todoService.findTodoById(id));
     return "edit";
   }
 
   @PostMapping("{id}/edit")
   public String Edit(@ModelAttribute Todo todo){
-    todoRepository.save(todo);
+    todoService.save(todo);
     return "redirect:/todo/list";
   }
+
+  @GetMapping("search")
+  public String toSearchPage(){
+    return "search";
+  }
+
+  @PostMapping("search")
+  public String search(Model model, @RequestParam String title){
+    model.addAttribute("todos", todoService.findTitleByContaining(title));
+    return "todoList";
+  }
+
 
 }

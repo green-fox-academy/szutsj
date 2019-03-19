@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Todos</title>
+</head>
+<body>
+<h1>Todos for today</h1>
+<div th:if="${none}" th:text="${none}">
+<div th:unless="${none}" th:text="${todos}">
+<div th:each="todo: ${todos}">
+    <div th:text="${todo.title}">
+    </div>
+</div>
+
+</body>
+</html>

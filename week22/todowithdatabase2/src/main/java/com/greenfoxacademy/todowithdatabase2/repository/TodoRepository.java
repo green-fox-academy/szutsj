@@ -13,5 +13,6 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
   ArrayList<Todo> findByDone(boolean done);
   ArrayList<Todo> findByUrgent(boolean urgent);
   Todo findTodoById(Long id);
+  ArrayList<Todo> findByTitleContaining(String title);
 
 }
