@@ -17,7 +17,7 @@ public class AssigneeController {
   @Autowired
   AssigneeService assigneeService;
 
-  @GetMapping({"/", "list"})
+  @GetMapping({"/", "list", ""})
   public String list(Model model){
     List<Assignee> actualList = new ArrayList<>();
 
@@ -42,7 +42,7 @@ public class AssigneeController {
   @PostMapping("add")
   public String addNewTodo(@RequestParam String name, String email){
     assigneeService.save(new Assignee(name, email));
-    return "redirect:/todo/assignee";
+    return "redirect:/assignee";
   }
 
   @GetMapping("{id}/delete")

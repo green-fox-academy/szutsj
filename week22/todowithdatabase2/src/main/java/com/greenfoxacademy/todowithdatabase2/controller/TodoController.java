@@ -19,7 +19,7 @@ public class TodoController {
   @Autowired
   TodoService todoService;
 
-  @GetMapping({"list", "/"})
+  @GetMapping({"list", "/", ""})
   public String list(Model model, @RequestParam (required = false) Boolean isActive){
     List<Todo> actualList = new ArrayList<>();
 
