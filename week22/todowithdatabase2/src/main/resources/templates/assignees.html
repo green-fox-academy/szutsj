@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ASSIGNEES</title>
+    <link rel="stylesheet" type="text/css" href="/todo.css">
+</head>
+<body>
+<h1>ASSIGNEES</h1>
+<a href="/todo/add new assignee">ADD NEW TODO TO LIST</a>
+<br>
+<br>
+<a href="/todo/search assignee">SEARCH TODO</a>
+<br>
+<br>
+<div th:if="${none}" th:text="${none}"></div>
+<table th:unless="${none}">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>DELETE</th>
+        <th>EDIT</th>
+    </tr>
+    </thead>
+    <tr th:each="assignee: ${assignees}" th:object="${assignee}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{name}"></td>
+        <td th:text="*{email}"></td>
+        <td><a th:href="'/assignee/'+*{id}+'/delete'">DELETE</a></td>
+        <td><a th:href="'/assignee/'+*{id}+'/edit'">EDIT</a></td>
+    </tr>
+</table>
+</body>
+</html>

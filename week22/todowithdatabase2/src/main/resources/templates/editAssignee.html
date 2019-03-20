@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT ASSIGNEE</title>
+</head>
+<body>
+<form method="post" th:object="${assignee}">
+    <label for="name">ASSIGNEE NAME</label>
+    <input type="text" id="name" th:field="*{name}" required/><br>
+
+    <label for="name">EMAIL</label>
+    <input type="text" id="email" th:field="*{email}" required/><br>
+
+    <input type="submit" value="OK">
+</form>
+</body>
+</html>
