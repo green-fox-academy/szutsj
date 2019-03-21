@@ -2,6 +2,7 @@ package com.greenfoxacademy.todowithdatabase2.controller;
 
 import com.greenfoxacademy.todowithdatabase2.model.Assignee;
 import com.greenfoxacademy.todowithdatabase2.service.AssigneeService;
+import com.greenfoxacademy.todowithdatabase2.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class AssigneeController {
 
   @Autowired
   AssigneeService assigneeService;
+
+  @Autowired
+  TodoService todoService;
 
   @GetMapping({"/", "list", ""})
   public String list(Model model){

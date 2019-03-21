@@ -1,18 +1,20 @@
 package com.greenfoxacademy.todowithdatabase2.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Assignee {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
-  String name;
-  String email;
+  private Long id;
+  private String name;
+  private String email;
+
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "assignee")
+  private List<Todo> todos;
+
 
   public Assignee(){
   }
@@ -48,4 +50,15 @@ public class Assignee {
     this.email = email;
   }
 
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public List<Todo> getTodos() {
+    return todos;
+  }
+
+  public void setTodos(List<Todo> todos) {
+    this.todos = todos;
+  }
 }

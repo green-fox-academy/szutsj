@@ -13,7 +13,7 @@
 <a href="/todo/search">SEARCH TODO</a>
 <br>
 <br>
-<a href="/todo/assignees">LIST OF ASSIGNEES</a>
+<a href="/assignee">LIST OF ASSIGNEES</a>
 <br>
 <br>
 <div th:if="${none}" th:text="${none}"></div>
@@ -24,6 +24,7 @@
             <th>ACTION</th>
             <th>DONE</th>
             <th>URGENT</th>
+            <th>ASSIGNEE</th>
             <th>DELETE</th>
             <th>EDIT</th>
         </tr>
@@ -33,6 +34,7 @@
             <td th:text="*{title}"></td>
             <td th:text="*{done}"></td>
             <td th:text="*{urgent}"></td>
+            <td th:text="*{assignee==null} ? '' : *{assignee.name}"></td>
             <td><a th:href="'/todo/'+*{id}+'/delete'">DELETE</a></td>
             <td><a th:href="'/todo/'+*{id}+'/edit'">EDIT</a></td>
         </tr>

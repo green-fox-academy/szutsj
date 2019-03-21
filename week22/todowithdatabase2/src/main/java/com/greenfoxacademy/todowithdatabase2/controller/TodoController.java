@@ -1,7 +1,9 @@
 package com.greenfoxacademy.todowithdatabase2.controller;
 
 
+import com.greenfoxacademy.todowithdatabase2.model.Assignee;
 import com.greenfoxacademy.todowithdatabase2.model.Todo;
+import com.greenfoxacademy.todowithdatabase2.service.AssigneeService;
 import com.greenfoxacademy.todowithdatabase2.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class TodoController {
 
   @Autowired
   TodoService todoService;
+
+  @Autowired
+  AssigneeService assigneeService;
 
   @GetMapping({"list", "/", ""})
   public String list(Model model, @RequestParam (required = false) Boolean isActive){
@@ -58,11 +63,18 @@ public class TodoController {
   @GetMapping("{id}/edit")
   public String chooseToEdit(Model model, @PathVariable Long id){
     model.addAttribute("todo", todoService.findTodoById(id));
+    model.addAttribute("assignees", assigneeService.findAll());
     return "edit";
   }
 
   @PostMapping("{id}/edit")
   public String Edit(@ModelAttribute Todo todo){
+    Long id = todo.getId();
+
+    if (id == null){
+      if (todoService.findTodoById(id).getAssignee() != null)
+      todo.setAssignee(null);
+    }
     todoService.save(todo);
     return "redirect:/todo/list";
   }

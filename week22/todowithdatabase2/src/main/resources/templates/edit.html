@@ -15,6 +15,13 @@
     <label for="urgent">URGENT</label>
     <input type="checkbox" id="urgent" th:field="*{urgent}"/><br>
 
+    <label for="assignee">ASSIGNEE</label>
+    <select id="assignee" th:field="*{assignee.id}">
+        <option value=""></option>
+         <option th:each="assignee: ${assignees}" th:text="${assignee.name}" th:value="${assignee.id}"></option>
+    </select>
+    <br>
+
     <input type="submit" value="OK">
 </form>
 </body>
