@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -68,7 +69,7 @@ public class TodoController {
   }
 
   @PostMapping("{id}/edit")
-  public String Edit(@ModelAttribute Todo todo){
+  public String Edit(@ModelAttribute Todo todo, @RequestParam String date){
     Long id = todo.getId();
 
     if (id == null){
