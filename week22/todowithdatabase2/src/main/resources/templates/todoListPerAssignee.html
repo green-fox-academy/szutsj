@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${assignee.name}">'S TODOS</title>
+    <link rel="stylesheet" type="text/css" href="/todo.css">
+</head>
+<body>
+<h1 th:text="'TODOS OF ' + ${assignee.name} + ' FOR TODAY' "></h1>
+<br><a href="/todo/list">TODOLIST</a>
+<br>
+<br>
+<a href="/assignee">LIST OF ASSIGNEES</a>
+<br>
+<br>
+<table th:if="${assignee.getTodos()!=null && !assignee.getTodos().isEmpty()}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ACTION</th>
+            <th>DONE</th>
+            <th>URGENT</th>
+        </tr>
+        </thead>
+        <tr th:each="todo: ${assignee.getTodos()}" th:object="${todo}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{title}"></td>
+            <td th:text="*{done}"></td>
+            <td th:text="*{urgent}"></td>
+        </tr>
+</table>
+<div th:unless="${assignee.getTodos()!=null && !assignee.getTodos().isEmpty()}">NO TODOS FOR TODAY</div>
+</body>
+</html>

@@ -61,6 +61,13 @@ public class AssigneeController {
     return "editAssignee";
   }
 
+  @GetMapping("{id}/todos")
+  public String todosOfAssignee(Model model, @PathVariable Long id){
+
+    model.addAttribute("assignee", assigneeService.findAssigneeById(id));
+    return "todoListPerAssignee";
+  }
+
   @PostMapping("{id}/edit")
   public String Edit(@ModelAttribute Assignee assignee){
     assigneeService.save(assignee);

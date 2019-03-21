@@ -22,6 +22,7 @@
         <th>ID</th>
         <th>NAME</th>
         <th>EMAIL</th>
+        <th>TODOS</th>
         <th>DELETE</th>
         <th>EDIT</th>
     </tr>
@@ -30,6 +31,7 @@
         <td th:text="*{id}"></td>
         <td th:text="*{name}"></td>
         <td th:text="*{email}"></td>
+        <td><a th:href="'/assignee/'+*{id}+'/todos'">TODOS</a></td>
         <td><a th:href="'/assignee/'+*{id}+'/delete'">DELETE</a></td>
         <td><a th:href="'/assignee/'+*{id}+'/edit'">EDIT</a></td>
     </tr>
