@@ -1,7 +1,7 @@
 package com.greenfoxacademy.todowithdatabase2.controller;
 
 
-import com.greenfoxacademy.todowithdatabase2.model.Assignee;
+
 import com.greenfoxacademy.todowithdatabase2.model.Todo;
 import com.greenfoxacademy.todowithdatabase2.service.AssigneeService;
 import com.greenfoxacademy.todowithdatabase2.service.TodoService;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -69,13 +69,8 @@ public class TodoController {
   }
 
   @PostMapping("{id}/edit")
-  public String Edit(@ModelAttribute Todo todo, @RequestParam String date){
-    Long id = todo.getId();
-
-    if (id == null){
-      if (todoService.findTodoById(id).getAssignee() != null)
-      todo.setAssignee(null);
-    }
+  public String Edit(@ModelAttribute Todo todo, @RequestParam String duedate){
+    todo.setDueDate(LocalDate.parse(duedate));
     todoService.save(todo);
     return "redirect:/todo/list";
   }

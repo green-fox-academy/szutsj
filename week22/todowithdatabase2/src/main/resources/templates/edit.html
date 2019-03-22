@@ -10,7 +10,7 @@
     <input type="text" id="title" th:field="*{title}" required/><br>
 
     <label for="duedate">DUE DATE</label>
-    <input type="date" id="duedate" name="date" required/><br>
+    <input type="date" id="duedate" name="duedate"/><br>
 
     <label for="done">DONE</label>
     <input type="checkbox" id="done" th:field="*{done}"/><br>
@@ -19,9 +19,9 @@
     <input type="checkbox" id="urgent" th:field="*{urgent}"/><br>
 
     <label for="assignee">ASSIGNEE</label>
-    <select id="assignee" th:field="*{assignee.id}">
-        <option value=""></option>
-         <option th:each="assignee: ${assignees}" th:text="${assignee.name}" th:value="${assignee.id}"></option>
+    <select id="assignee" th:field="*{assignee}">
+        <option value="">--</option>
+       <option th:each="assignee: ${assignees}" th:text="${assignee.name}" th:value="${assignee.id}"></option>
     </select>
     <br>
 

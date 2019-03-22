@@ -15,13 +15,11 @@ public class Todo {
   private boolean urgent;
   private boolean done;
 
-  @Temporal(value = TemporalType.TIMESTAMP)
   @Column(name = "DATE")
-  private Date creationDate;
+  private LocalDate creationDate;
 
-  @Temporal(value = TemporalType.DATE)
   @Column(name = "DUE_DATE")
-  private Date dueDate;
+  private LocalDate dueDate;
 
   @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   @JoinColumn(name = "assignee_id")
@@ -30,7 +28,7 @@ public class Todo {
   public Todo(){
     urgent = false;
     done = false;
-    creationDate = new Date();
+    creationDate = LocalDate.now();
   }
 
   public Todo(String title){
@@ -78,19 +76,19 @@ public class Todo {
     this.assignee = assignee;
   }
 
-  public Date getCreationDate() {
+  public LocalDate getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
+  public void setCreationDate(LocalDate creationDate) {
     this.creationDate = creationDate;
   }
 
-  public Date getDueDate() {
+  public LocalDate getDueDate() {
     return dueDate;
   }
 
-  public void setDueDate(Date dueDate) {
+  public void setDueDate(LocalDate dueDate) {
     this.dueDate = dueDate;
   }
 
