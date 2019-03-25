@@ -48,5 +48,5 @@ public class Video {
   public void setPost(Post post) {
     this.post = post;
   }
-  
+
 }

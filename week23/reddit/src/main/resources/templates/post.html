@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>REDDIT-CLONE APP : ADD NEW POST</title>
+    <link rel="stylesheet" type="text/css" href="/reddit.css">
 </head>
 <body>
+<a href="/">Back to main page</a>
+<br>
+<br>
+<h1>Edit previous post or submit new post</h1>
+<form action="/submit" method="post">
+    <label for="title">TITLE</label>
+    <input type="text" id="title" name="title"/><br>
 
+    <label for="image">UPLOAD PICTURE</label>
+    <a href type="file" id="image" accept="image/*" name="picture"/><br>
+
+
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
