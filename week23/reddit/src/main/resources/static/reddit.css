@@ -1,0 +1,53 @@
+body{
+    background-color: gray;
+    color: deepskyblue;
+}
+
+.flex-container{
+    background-color: white;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: deepskyblue 1px solid;
+    margin: 10px;
+
+}
+
+.flex-container2{
+    background-color: white;
+    color: gray;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border: 1px solid deepskyblue;
+    margin: 2px;
+}
+
+.flex-container3{
+    background-color: white;
+    color: gray;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border: 1px solid gray;
+    margin: 2px;
+}
+
+.title{
+    font-style: oblique;
+}
+
+.title2{
+    font-style: italic;
+}
+
+a{
+    font-style: italic;
+    color: deepskyblue;
+}
+
+h1{
+    color: deepskyblue;
+    text-align: center;
+}

@@ -17,6 +17,12 @@ public class Picture {
   public Picture() {
   }
 
+  public Picture(String title, String src){
+    this();
+    this.title = title;
+    this.src = src;
+  }
+
   public long getId() {
     return id;
   }

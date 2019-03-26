@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>REDDIT-CLONE APP : EDIT POST</title>
+    <link rel="stylesheet" type="text/css" href="/reddit.css">
+</head>
+<body>
+<a href="/">Back to main page</a>
+<br>
+<br>
+<h1>Submit new post</h1>
+<form th:action="'/edit/end/'+${post.id}" method="post" th:object="${post}">
+    <label for="title">TITLE</label>
+    <input type="text"  id="title" th:field="${post.title}"/>
+    <input type="submit" value="SUBMIT CHANGES IN POST"><br>
+</form>
+<th:block th:each="picture:${post.getPictures()}">
+    <img th:src="${picture.getSrc()}"/><br>
+</th:block><br>
+<th:block th:each="video:${post.getVideos()}">
+    <video >
+        <source th:src="${video.getSrc()}" type="video/*">
+    </video><br>
+</th:block><br>
+<form th:action="'/upload/picture/post/'+${post.id}" method="post">
+    <label for="pictitle">TITLE FOR PICTURE</label>
+    <input type="text"  id="pictitle" name="title"/>
+    <input type="file" accept="image/*" name="src">
+    <input type="submit" value="Upload picture">
+</form><br>
+<form th:action="'/upload/video/post/'+${post.id}" method="post" enctype="multipart/form-data">
+    <label for="videotitle">TITLE FOR VIDEO</label>
+    <input type="text"  id="videotitle" name="title"/>
+    <input type="file" accept="image/*" name="src">
+    <input type="submit" value="Upload video">
+</form><br>
+</body>
+</html>

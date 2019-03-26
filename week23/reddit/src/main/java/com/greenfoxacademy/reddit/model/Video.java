@@ -17,6 +17,12 @@ public class Video {
   public Video() {
   }
 
+  public Video(String title, String src) {
+    this();
+    this.title = title;
+    this.src = src;
+  }
+
   public long getId() {
     return id;
   }

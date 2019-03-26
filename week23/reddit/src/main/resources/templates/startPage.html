@@ -3,21 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>REDDIT-CLONE APP</title>
-    <link rel="stylesheet" type="text/css" href="/reddit.css">
+    <link rel="stylesheet" href="reddit.css">
 </head>
-<body>
+<body class="body">
 <a href="/submit">Submit new post</a>
+<br>
+<a href="/user">Login</a>
 <br>
 <br>
 <h1>Trending posts</h1>
 <div th:if="${none}" th:text="${none}"></div>
-<th:block th:unless="${none}">
-    <th:block th:each="post:${posts}">
-        <span th:text="${post.id}"></span>
-        <a th:href="'/upvote/'+${post.id}">+</a>
-        <a th:href="'/downvote/'+${post.id}">-</a>
-        <span th:text="${post.title}"></span><br>
-    </th:block><br>
-</th:block>
+<div th:unless="${none}">
+    <div  class="flex-container" th:each="post:${posts}">
+        <div>
+            <span th:text="${post.id}"></span>
+            <a th:href="'/upvote/'+${post.id}"><img src="plus.png" height="10px" width="10px" /></a>
+            <a th:href="'/downvote/'+${post.id}"><img src="minus.png" height="10px" width="10px" /></a>
+        </div>
+        <!--<span class="title" th:text="${post.user.name}   "></span>-->
+        <span class="title" th:text="${post.title}"></span><br>
+        <div class="flex-container2" th:each="picture:${post.getPictures()}">
+            <div>
+                <p class="title2" th:text="${picture.title}"></p>
+                <img th:src="${picture.src}"/>
+            </div>
+        </div>
+        <div class="flex-container3" th:each="video:${post.getVideos()}">
+            <div>
+                <p class="title2" th:text="${video.title}"></p>
+                <video>
+                    <source th:src="${video.src}">
+                </video>
+            </div>
+        </div>
+    </div><br>
+</div>
 </body>
 </html>
