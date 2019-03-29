@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>REDDIT-CLONE APP : ADD NEW POST</title>
-    <link rel="stylesheet" type="text/css" href="/reddit.css">
+    <link rel="stylesheet" href="/css/reddit.css">
 </head>
 <body>
-<a href="/">Back to main page</a>
+<button onclick="location.href='/'">Back to main page</button><br>
 <br>
 <br>
 <h1>Submit new post</h1>
-<form action="/submit" method="post">
+<form th:action="'/submit/'+${userLoggedIn.id}" method="post">
     <label for="title">TITLE</label>
     <input type="text" id="title" name="title"/><br>
-    <input type="submit" value="Submit">
+    <input class="submit" type="submit" value="Submit">
 </form>
 </body>
 </html>

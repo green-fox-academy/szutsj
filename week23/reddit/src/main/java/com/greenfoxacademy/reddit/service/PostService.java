@@ -27,21 +27,25 @@ public class PostService {
     postRepository.save(post);
   }
 
-  public Optional<Post> findPostById(Long id){
-    return  postRepository.findPostById(id);
+  public void delete(Post post){
+    postRepository.delete(post);
+  }
+
+  public Optional<Post> findById(Long id){
+    return  postRepository.findById(id);
   }
 
   public void upvote(Long id){
-    if (findPostById(id).isPresent()){
-      Post post = findPostById(id).get();
+    if (findById(id).isPresent()){
+      Post post = findById(id).get();
       post.setVote(post.getVote() + 1);
       save(post);
     }
   }
 
   public void downvote(Long id){
-    if (findPostById(id).isPresent()){
-      Post post = findPostById(id).get();
+    if (findById(id).isPresent()){
+      Post post = findById(id).get();
       post.setVote(post.getVote() - 1);
       save(post);
     }

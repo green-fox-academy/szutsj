@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
-
+  void delete(Post post);
   List<Post> findAll();
   List<Post> findAllByOrderByVoteDesc();
-  Optional<Post> findPostById(Long id);
+  Optional<Post> findById(Long id);
 }

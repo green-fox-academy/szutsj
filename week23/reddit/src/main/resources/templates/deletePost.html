@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>REDDIT-CLONE APP : EDIT POST</title>
+    <link rel="stylesheet" href="/css/reddit.css">
+</head>
+<body>
+<button onclick="location.href='/'">Back to main page</button><br>
+<br>
+<h1>Edit post</h1>
+<form th:action="'/delete/'+${loggedInUser.id}+'/'+ ${post.id}+'/end/'" method="post" th:object="${post}">
+    <input class="submit" type="submit" value="Delete post"><br>
+</form>
+<div class="title" th:text="${post.title}"></div>
+<th:block th:each="picture:${post.getPictures()}">
+    <p class="title2" th:text="${picture.title}"></p>
+    <img height="100", th:src="${picture.getSrc()}"/><br>
+</th:block><br>
+<th:block th:each="video:${post.getVideos()}">
+    <p class="title2" th:text="${video.title}"></p>
+    <video height="100" controls th:src="${video.src}" type="video/*" autoplay="false">
+    </video><br>
+</th:block><br>
+</body>
+</html>

@@ -1,7 +1,5 @@
 package com.greenfoxacademy.reddit.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,7 +11,7 @@ public class Post {
   private String title;
   private int vote;
 
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
   private User user;
 

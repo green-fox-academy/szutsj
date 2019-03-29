@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>REDDIT-CLONE APP</title>
+    <title>REDDIT-CLONE APP: MY POSTS</title>
     <link rel="stylesheet" href="/css/reddit.css">
 </head>
 <body class="body">
-<button onclick="location.href='/user'">Login</button>
-<button onclick="location.href='/user/signUp'">Sign Up</button>
+<button th:onclick="'window.location.href= \''+ '/submit/' +${loggedInUser.id}+'\''">Submit new post</button>
+<br>
+<button onclick="location.href='/user/logout'">Logout</button>
 <br>
 <br>
 <h1>Trending posts</h1>
@@ -15,15 +16,10 @@
 <div th:unless="${none}">
     <div  class="flex-container" th:each="post:${posts}">
         <div>
-            <form th:action="'/upvote/'+${post.id}" method="post">
-                <input type="image" src="/image/plus.png" height="10px" width="10px" />
-            </form>
-            <div class="vote" th:text="${post.vote}"></div>
-            <form th:action="'/downvote/'+${post.id}" method="post">
-                <input type="image" src="/image/minus.png" height="10px" width="10px" />
-            </form>
+            <span th:text="'Votes on post: '+${post.vote}"></span>
+            <button th:onclick="'window.location.href= \''+'/edit/'+${loggedInUser.id}+'/'+${post.id}+'\''">edit post</button>
+            <button th:onclick="'window.location.href= \''+'/delete/'+${loggedInUser.id}+'/'+${post.id}+'\''">delete post</button>
         </div>
-        <span class="title" th:text="'Posted by '+${post.user.name}+'.'"></span>
         <span class="title" th:text="${post.title}"></span><br>
         <div class="flex-container2" th:each="picture:${post.getPictures()}">
             <div>
@@ -35,7 +31,7 @@
             <div>
                 <p class="title2" th:text="${video.title}"></p>
                 <video height="100" controls th:src="${video.src}" type="video/*" autoplay="false">
-                                    </video>
+                </video>
             </div>
         </div>
     </div><br>

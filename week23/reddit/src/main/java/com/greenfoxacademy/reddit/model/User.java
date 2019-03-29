@@ -11,10 +11,15 @@ public class User {
   private String name;
   private String password;
 
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "user")
   List<Post> posts;
 
   public User() {
+  }
+
+  public User(String name, String password) {
+    this.name = name;
+    this.password = password;
   }
 
   public long getId() {
@@ -48,4 +53,5 @@ public class User {
   public void setPosts(List<Post> posts) {
     this.posts = posts;
   }
+
 }

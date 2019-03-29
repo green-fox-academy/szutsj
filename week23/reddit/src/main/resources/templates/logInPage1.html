@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="/css/reddit.css">
+</head>
+<body>
+<button onclick="location.href='/'">Back to main page</button><br>
+<div th:if="${message}" th:text="${message}"></div>
+<form action="/user" method="post">
+    <label for="name">USER NAME</label>
+    <input type="text"  id="name" name="name">
+
+    <label for="password">PASSWORD<label>
+    <input type="password"  id="password" name="password">
+
+    <input class="submit" type="submit" value="Login">
+
+
+</form>
+</body>
+</html>
