@@ -2,13 +2,13 @@ package com.greenfoxacademy.restfirst.model;
 
 public class Factor {
 
-  private Integer factor;
+  private int factor;
 
   public Factor(DoUntil doUntil) {
     this.factor = countFactor(doUntil.getUntil());
   }
 
-  public Integer getFactor() {
+  public int getFactor() {
     return factor;
   }
 
@@ -16,9 +16,9 @@ public class Factor {
     this.factor = factor;
   }
 
-  private Integer countFactor(Integer number){
-    Integer factor = 1;
-    for (Integer i = 2; i <= number; i++) {
+  private int countFactor(Integer number){
+    int factor = 1;
+    for (int i = 2; i <= number; i++) {
       factor *= i;
     }
     return factor;

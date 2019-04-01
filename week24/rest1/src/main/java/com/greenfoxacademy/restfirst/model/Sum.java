@@ -2,23 +2,23 @@ package com.greenfoxacademy.restfirst.model;
 
 public class Sum {
 
-  private Integer sum;
+  private int sum;
 
   public Sum(DoUntil doUntil) {
     this.sum = countSum(doUntil.getUntil());
   }
 
-  public Integer getSum() {
+  public int getSum() {
     return sum;
   }
 
-  public void setSum(Integer sum) {
+  public void setSum(int  sum) {
     this.sum = sum;
   }
 
-  private Integer countSum(Integer number){
-    Integer sum = 0;
-    for (Integer i = 1; i <= number; i++) {
+  private int countSum(int number){
+    int sum = 0;
+    for (int i = 1; i <= number; i++) {
       sum += i;
     }
     return sum;
