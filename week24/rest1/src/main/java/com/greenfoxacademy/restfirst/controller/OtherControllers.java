@@ -1,9 +1,11 @@
 package com.greenfoxacademy.restfirst.controller;
 
+import com.greenfoxacademy.restfirst.model.Append;
 import com.greenfoxacademy.restfirst.model.Doubling;
 import com.greenfoxacademy.restfirst.model.Error;
 import com.greenfoxacademy.restfirst.model.Greeting;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,5 +37,11 @@ public class OtherControllers {
 
     return new Greeting(name, title);
   }
+
+  @GetMapping("/appenda/{appendable}")
+  public Object greeting(@PathVariable String appendable){
+    return new Append(appendable);
+  }
+
 
 }
