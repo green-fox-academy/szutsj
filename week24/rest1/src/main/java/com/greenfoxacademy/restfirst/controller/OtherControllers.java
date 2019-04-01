@@ -1,13 +1,8 @@
 package com.greenfoxacademy.restfirst.controller;
 
-import com.greenfoxacademy.restfirst.model.Append;
-import com.greenfoxacademy.restfirst.model.Doubling;
+import com.greenfoxacademy.restfirst.model.*;
 import com.greenfoxacademy.restfirst.model.Error;
-import com.greenfoxacademy.restfirst.model.Greeting;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OtherControllers {
@@ -43,5 +38,20 @@ public class OtherControllers {
     return new Append(appendable);
   }
 
+  @PostMapping("/dountil/sum")
+  public Object countSum(@RequestParam (required = false) Integer doUntil){
+    if (doUntil == null){
+      return new Error("Please, provide a number!");
+    }
+    return new Sum(new DoUntil(doUntil));
+  }
+
+  @PostMapping("/dountil/factor")
+  public Object countFactor(@RequestParam (required = false) Integer doUntil){
+    if (doUntil == null){
+      return new Error("Please, provide a number!");
+    }
+    return new Factor(new DoUntil(doUntil));
+  }
 
 }
