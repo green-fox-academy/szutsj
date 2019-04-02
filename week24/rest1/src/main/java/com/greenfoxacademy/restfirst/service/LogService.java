@@ -21,4 +21,9 @@ public class LogService {
     return  logRepository.findAll();
   }
 
+  public ArrayList<Log> findAllByDateContaining(String word){
+    return  logRepository.findAllByDataContaining(word);
+  }
+
+
 }

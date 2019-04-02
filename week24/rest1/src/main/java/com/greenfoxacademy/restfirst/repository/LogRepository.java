@@ -9,4 +9,5 @@ import java.util.ArrayList;
 @Repository
 public interface LogRepository extends CrudRepository<Log, Long>{
   ArrayList<Log> findAll();
+  ArrayList<Log> findAllByDataContaining(String word);
 }
