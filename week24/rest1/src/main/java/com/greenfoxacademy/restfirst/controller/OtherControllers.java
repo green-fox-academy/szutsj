@@ -3,7 +3,6 @@ package com.greenfoxacademy.restfirst.controller;
 import com.greenfoxacademy.restfirst.model.*;
 import com.greenfoxacademy.restfirst.model.Double;
 import com.greenfoxacademy.restfirst.model.Error;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,33 +12,33 @@ public class OtherControllers {
 
 
   @GetMapping("/doubling")
-  public Object countDouble(@RequestParam(required = false) Integer input) {
+  public ResponseEntity<Object> countDouble(@RequestParam(required = false) Integer input) {
     if (input == null) {
-      return new Error("Please provide an input!");
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please provide an input!"));
     }
-    return new Doubling(input);
+    return ResponseEntity.status(HttpStatus.OK).body(new Doubling(input));
   }
 
   @GetMapping("/greeter")
-  public Object greeting(@RequestParam(required = false) String name, String title) {
+  public ResponseEntity<Object> greeting(@RequestParam(required = false) String name, String title) {
     if (name == null) {
       if (title == null) {
-        return new Error("Please provide a name and title!");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please provide a name and title!"));
       } else {
-        return new Error("Please provide a name!");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please provide a name!"));
       }
     }
 
     if (title == null) {
-      return new Error("Please provide a title!");
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please provide a title!"));;
     }
 
-    return new Greeting(name, title);
+    return ResponseEntity.status(HttpStatus.OK).body(new Greeting(name, title));
   }
 
   @GetMapping("/appenda/{appendable}")
-  public Object greeting(@PathVariable String appendable) {
-    return new Append(appendable);
+  public ResponseEntity<Object> greeting(@PathVariable String appendable) {
+    return ResponseEntity.status(HttpStatus.OK).body(new Append(appendable));
   }
 
   @PostMapping("/dountil/{what}")
