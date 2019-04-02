@@ -30,7 +30,7 @@ public class OtherControllers {
     }
 
     if (title == null) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please provide a title!"));;
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please provide a title!"));
     }
 
     return ResponseEntity.status(HttpStatus.OK).body(new Greeting(name, title));
@@ -42,15 +42,15 @@ public class OtherControllers {
   }
 
   @PostMapping("/dountil/{what}")
-  public ResponseEntity<?> countSum(@PathVariable String what, @RequestBody DoUntil doUntil) {
-    if (doUntil != null) {
+  public ResponseEntity<?> countSum(@PathVariable String what, @RequestBody (required = false) Until until) {
+    if (until != null) {
 
       if (what.equals("sum")) {
-        return ResponseEntity.status(HttpStatus.OK).body(new Sum(doUntil));
+        return ResponseEntity.status(HttpStatus.OK).body(new Sum(until));
       }
 
       if (what.equals("factor")) {
-        return ResponseEntity.status(HttpStatus.OK).body(new Sum(doUntil));
+        return ResponseEntity.status(HttpStatus.OK).body(new Sum(until));
       }
     }
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please, provide a number!"));

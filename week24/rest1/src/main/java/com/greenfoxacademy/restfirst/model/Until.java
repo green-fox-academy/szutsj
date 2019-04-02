@@ -1,13 +1,13 @@
 package com.greenfoxacademy.restfirst.model;
 
-public class DoUntil {
+public class Until {
 
   private int until;
 
-  public DoUntil() {
+  public Until() {
   }
 
-  public DoUntil(int until) {
+  public Until(int until) {
     this.until = until;
   }
 

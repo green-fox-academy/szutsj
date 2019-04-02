@@ -4,8 +4,8 @@ public class Sum {
 
   private int sum;
 
-  public Sum(DoUntil doUntil) {
-    this.sum = countSum(doUntil.getUntil());
+  public Sum(Until until) {
+    this.sum = countSum(until.getUntil());
   }
 
   public int getSum() {

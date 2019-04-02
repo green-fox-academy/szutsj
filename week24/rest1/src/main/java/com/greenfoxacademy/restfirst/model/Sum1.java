@@ -2,27 +2,26 @@ package com.greenfoxacademy.restfirst.model;
 
 public class Sum1 {
 
-  private int result;
+  private int sum;
 
-  public Sum1(int[] result) {
-    this.result = sum(result);
+  public Sum1(int[] numbers) {
+    this.sum = countSum(numbers);
   }
 
-  public int getResult() {
-    return result;
+  public int getSum() {
+    return sum;
   }
 
-  public void setResult(int result) {
-    this.result = result;
+  public void setSum(int  sum) {
+    this.sum = sum;
   }
 
-  private int sum(int[] numbers){
-    int result = 0;
-
-    for (int number: numbers) {
-      result += number;
+  private int countSum(int[] number){
+    int sum = 0;
+    for (int i = 1; i <= number.length; i++) {
+      sum += i;
     }
-    return result;
+    return sum;
   }
 
 }

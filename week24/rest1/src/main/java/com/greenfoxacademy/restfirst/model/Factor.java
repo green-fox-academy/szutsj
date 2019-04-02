@@ -4,8 +4,8 @@ public class Factor {
 
   private int factor;
 
-  public Factor(DoUntil doUntil) {
-    this.factor = countFactor(doUntil.getUntil());
+  public Factor(Until until) {
+    this.factor = countFactor(until.getUntil());
   }
 
   public int getFactor() {
