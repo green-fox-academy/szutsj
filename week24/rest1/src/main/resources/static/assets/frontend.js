@@ -3,7 +3,7 @@
  */
 
 class Updoot {
-    baseUrl = 'http://localhost:8080';
+    baseUrl = 'localhost:8080';
 
     init() {
         // Apply event listeners

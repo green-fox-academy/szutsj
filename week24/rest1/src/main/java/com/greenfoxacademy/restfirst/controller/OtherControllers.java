@@ -4,6 +4,8 @@ import com.greenfoxacademy.restfirst.model.*;
 import com.greenfoxacademy.restfirst.model.Double;
 import com.greenfoxacademy.restfirst.model.Error;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -40,35 +42,35 @@ public class OtherControllers {
     return new Append(appendable);
   }
 
-  @PostMapping("/dountil/sum")
-  public Object countSum(@RequestBody DoUntil doUntil) {
+  @PostMapping("/dountil/{what}")
+  public ResponseEntity<?> countSum(@PathVariable String what, @RequestBody DoUntil doUntil) {
     if (doUntil != null) {
-      return new Sum(doUntil);
-    }
-    return new Error("Please, provide a number!");
-  }
 
-  @PostMapping("/dountil/factor")
-  public Object countFactor(@RequestBody DoUntil doUntil) {
-    if (doUntil != null) {
-      return new Factor(doUntil);
-    }
-    return new Error("Please, provide a number!");
-  }
+      if (what.equals("sum")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new Sum(doUntil));
+      }
 
-  @PostMapping("/arrays")
-  public Object whatToDoWithArrays(@RequestBody ArrayToWorkWith arrayToWorkWith){
-    if (arrayToWorkWith.getNumbers() != null){
-      if (arrayToWorkWith.getWhat().equals("sum")) {
-        return new Sum1(arrayToWorkWith.getNumbers());
-      } else if (arrayToWorkWith.getWhat().equals("multiply")) {
-        return new Multiply(arrayToWorkWith.getNumbers());
-      } else if (arrayToWorkWith.getWhat().equals("double")) {
-        return new Double(arrayToWorkWith.getNumbers());
+      if (what.equals("factor")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new Sum(doUntil));
       }
     }
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please, provide a number!"));
+  }
 
-    return new Error("Please, provide what to do with the numbers!");
+
+  @PostMapping("/arrays")
+  public ResponseEntity<Object> whatToDoWithArrays(@RequestBody (required = false) ArrayToWorkWith arrayToWorkWith){
+
+    if (arrayToWorkWith.getNumbers() != null){
+      if (arrayToWorkWith.getWhat().equals("sum")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new Sum1(arrayToWorkWith.getNumbers()));
+      } else if (arrayToWorkWith.getWhat().equals("multiply")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new Multiply(arrayToWorkWith.getNumbers()));
+      } else if (arrayToWorkWith.getWhat().equals("double")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new Double(arrayToWorkWith.getNumbers()));
+      }
+    }
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please, provide what to do with the numbers!"));
   }
 
 }
