@@ -20,11 +20,8 @@ public class OtherControllers {
   public ResponseEntity<Object> countDouble(@RequestParam(required = false) Integer input) {
     logService.save(new Log("/doubling", "Request param: input - "  +  input));
     if (input == null) {
-      Error error = new Error("Please provide an input!");
-//      logService.save(new Log("/doubling", error.toString()));
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Please provide an input!"));
     }
-//    logService.save(new Log("/doubling", "Request param: input - "  +  input));
     return ResponseEntity.status(HttpStatus.OK).body(new Doubling(input));
 
   }
