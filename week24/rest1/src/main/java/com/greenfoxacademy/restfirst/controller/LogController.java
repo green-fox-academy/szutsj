@@ -1,5 +1,6 @@
 package com.greenfoxacademy.restfirst.controller;
 
+import com.greenfoxacademy.restfirst.model.EntryCounter;
 import com.greenfoxacademy.restfirst.model.Error;
 import com.greenfoxacademy.restfirst.model.Log;
 import com.greenfoxacademy.restfirst.service.LogService;
@@ -22,6 +23,6 @@ public class LogController {
   public ResponseEntity<Object> logEntries(){
     logService.save(new Log("/log", ""));
     List<Log> logs = logService.findAll();
-    return ResponseEntity.status(HttpStatus.OK).body(logs);
+    return ResponseEntity.status(HttpStatus.OK).body(new EntryCounter(logs, logs.size()));
   }
 }
