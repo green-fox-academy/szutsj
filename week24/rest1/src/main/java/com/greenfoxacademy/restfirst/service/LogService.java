@@ -5,6 +5,8 @@ import com.greenfoxacademy.restfirst.repository.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class LogService {
 
@@ -14,4 +16,9 @@ public class LogService {
   public void save(Log log){
     logRepository.save(log);
   }
+
+  public ArrayList<Log> findAll(){
+    return  logRepository.findAll();
+  }
+
 }
