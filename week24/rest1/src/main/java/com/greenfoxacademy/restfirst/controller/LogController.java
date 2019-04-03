@@ -5,6 +5,7 @@ import com.greenfoxacademy.restfirst.model.Error;
 import com.greenfoxacademy.restfirst.model.Log;
 import com.greenfoxacademy.restfirst.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,18 +23,31 @@ public class LogController {
 
 
   @GetMapping("/log")
-  public ResponseEntity<Object> logEntries(@RequestParam (required = false) String q){
-    List<Log> logs;
+  public ResponseEntity<Object> logEntries(@RequestParam(required = false) String q, Integer count, Integer page) {
+    Page<Log> logs;
+    logService.save(new Log("/log", "Request param: q - " + q + ", count - " + count + ", page -" + page));
 
-    if (q == null) {
-      logService.save(new Log("/log", ""));
-      logs = logService.findAll();
-    } else {
-      logService.save(new Log("/log", "Request param: q - " + q));
-      logs = logService.findAllByDateContaining(q);
+    if (count == null){
+      count = Integer.MAX_VALUE;
     }
-    return ResponseEntity.status(HttpStatus.OK).body(new EntryCounter(logs, logs.size()));
-  }
 
+    if (page == null){
+      page = 1;
+    }
+
+    if (q != null){
+      logs = logService.findAllByDataContaining(q, page, count);
+    } else {
+      logs = logService.findAll(page, count);
+    }
+
+    List<Log> logsAL = logs.getContent();
+
+    if (logsAL.size() == 0){
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Error("Nincs mit listázni"));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(new EntryCounter(logsAL, logsAL.size()));
+    }
+  }
 
 }

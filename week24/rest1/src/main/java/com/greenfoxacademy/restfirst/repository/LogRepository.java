@@ -1,13 +1,13 @@
 package com.greenfoxacademy.restfirst.repository;
 
 import com.greenfoxacademy.restfirst.model.Log;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-
 @Repository
-public interface LogRepository extends CrudRepository<Log, Long>{
-  ArrayList<Log> findAll();
-  ArrayList<Log> findAllByDataContaining(String word);
+public interface LogRepository extends PagingAndSortingRepository<Log, Long> {
+  Page<Log> findAll(Pageable pageable);
+  Page<Log> findAllByDataContaining(String word, Pageable pageable);
 }
