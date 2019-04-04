@@ -35,15 +35,11 @@ public class LogController {
       page = 1;
     }
 
-    if (q == null){
-      q = "";
-    }
-
-//    if (q != null){
+    if (q != null){
       logs = logService.findAllByDataContaining(q, page, count);
-//    } else {
-//      logs = logService.findAll(page, count);
-//    }
+    } else {
+      logs = logService.findAll(page, count);
+    }
 
     List<Log> logsAL = logs.getContent();
 
