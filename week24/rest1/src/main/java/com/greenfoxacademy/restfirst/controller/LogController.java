@@ -28,18 +28,22 @@ public class LogController {
     logService.save(new Log("/log", "Request param: q - " + q + ", count - " + count + ", page -" + page));
 
     if (count == null){
-      count = Integer.MAX_VALUE;
+      count = 20;
     }
 
     if (page == null){
       page = 1;
     }
 
-    if (q != null){
-      logs = logService.findAllByDataContaining(q, page, count);
-    } else {
-      logs = logService.findAll(page, count);
+    if (q == null){
+      q = "";
     }
+
+//    if (q != null){
+      logs = logService.findAllByDataContaining(q, page, count);
+//    } else {
+//      logs = logService.findAll(page, count);
+//    }
 
     List<Log> logsAL = logs.getContent();
 
